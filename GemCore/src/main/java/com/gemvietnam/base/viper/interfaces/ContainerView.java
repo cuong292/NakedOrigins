@@ -16,6 +16,8 @@ public interface ContainerView extends IView {
 
   void pushView(IView view);
 
+  void pushViewWithAnimation(IView view, int animIn, int animOut);
+
   void popView(IView mView);
 
   void loadChildView(IView view, int frameId, FragmentManager childFragmentManager);

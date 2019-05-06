@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 
 /**
  * Base Fragment
@@ -45,6 +46,16 @@ public abstract class ContainerActivity extends BaseActivity implements Containe
   }
 
   @Override
+  public void pushViewWithAnimation(IView view, int animIn, int animOut) {
+    if (view instanceof BaseFragment) {
+      addFragmentWithCustomAnim(((BaseFragment) view)
+              .setAnimIn(animIn)
+              .setAnimOut(animOut),
+          true, animIn, animOut);
+    }
+  }
+
+  @Override
   public void popView(IView view) {
     if (view instanceof BaseFragment) {
       FragmentManager manager = getSupportFragmentManager();
@@ -59,8 +70,8 @@ public abstract class ContainerActivity extends BaseActivity implements Containe
   public void presentView(IView view) {
     if (view instanceof BaseFragment) {
       addFragment(((BaseFragment) view)
-          .setAnimIn(R.anim.slide_bottom_in)
-          .setAnimOut(R.anim.slide_bottom_out),
+              .setAnimIn(R.anim.slide_bottom_in)
+              .setAnimOut(R.anim.slide_bottom_out),
           true);
     }
   }
@@ -81,6 +92,10 @@ public abstract class ContainerActivity extends BaseActivity implements Containe
 
   public void addFragment(BaseFragment fragment, boolean addToBackStack) {
     addFragment(fragment, addToBackStack, fragment.getClass().getSimpleName());
+  }
+
+  public void addFragmentWithCustomAnim(BaseFragment fragment, boolean addToBackStack, int animIn, int animOut) {
+    addFragmentWithCustomAnim(CoreDefault.FRAGMENT_CONTAINER_ID, fragment, addToBackStack, fragment.getClass().getSimpleName(), animIn, animOut);
   }
 
   public void addFragment(BaseFragment fragment, boolean addToBackStack, String tag) {

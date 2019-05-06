@@ -3,4 +3,12 @@
   <color name="colorPrimary">#3F51B5</color>
   <color name="colorPrimaryDark">#303F9F</color>
   <color name="colorAccent">#FF4081</color>
+  <color name="colorBlack">#000000</color>
+  <color name="colorTransparent">#00FFFFFF</color>
+  <color name="colorSemiTransparent">#56FFFFFF</color>
+  <color name="colorWhite">#FDFDFD</color>
+  <color name="colorPatel">#F7EDDF</color>
+  <color name="colorSemiBlack">#202020</color>
+  <color name="colorSemiiBlack">#030303</color>
+  <color name="colorSemiGray">#595650</color>
 </resources>

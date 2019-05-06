@@ -109,6 +109,49 @@ public class ActivityUtils {
     transaction.commitAllowingStateLoss();
   }
 
+  public static void addFragmentToActivity(@NonNull FragmentManager fragmentManager,
+                                           @NonNull Fragment fragment, int frameId, boolean
+                                               addToBackStack, String tag, boolean loadExisted,int animIn,int animOut) {
+    checkNotNull(fragmentManager);
+    checkNotNull(fragment);
+    FragmentTransaction transaction = fragmentManager.beginTransaction();
+//    transaction.setCustomAnimations(
+//        R.anim.screen_enter,
+//        R.anim.screen_exit,
+//        R.anim.slide_none,
+//        R.anim.screen_pop_exit);
+
+    if (addToBackStack) {
+      transaction.setCustomAnimations(animIn,animOut);
+      transaction.addToBackStack(tag);
+    }
+
+    if (loadExisted) {
+      final Fragment existingFragment = fragmentManager.findFragmentByTag(tag);
+      if (existingFragment != null) {
+        for (Fragment f : fragmentManager.getFragments()) {
+          transaction.hide(f);
+        }
+        transaction.show(existingFragment);
+        // transaction.replace(frameId, existingFragment, tag);
+        if (existingFragment instanceof ViewFragment) {
+          new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+              ((ViewFragment) existingFragment).getPresenter().onFragmentDisplay();
+            }
+          });
+        }
+      } else {
+        transaction.add(frameId, fragment, tag);
+      }
+    } else {
+      transaction.add(frameId, fragment, tag);
+    }
+//    transaction.commit();
+    transaction.commitAllowingStateLoss();
+  }
+
   /**
    * Start activity
    */

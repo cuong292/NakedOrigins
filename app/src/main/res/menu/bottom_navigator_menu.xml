@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+    android:id="@+id/support_mn"
+    android:icon="@drawable/ic_noun_journey"
+    android:title="SUPPORT" />
+  <item
+    android:id="@+id/journey_mn"
+    android:icon="@drawable/ic_noun_journey"
+    android:title="JOURNEY" />
+  <item
+    android:id="@+id/discover_mn"
+    android:icon="@drawable/ic_coffee_cup"
+    android:title="DISCOVER" />
+</menu>

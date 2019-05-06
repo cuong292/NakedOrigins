@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:id="@+id/about_root_view"
+  android:background="@drawable/anhcaphe">
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="30dp"
+    android:fontFamily="@font/playfairdisplay"
+    android:gravity="center"
+    android:text="@string/product_explore"
+    android:textColor="@color/colorWhite"
+    android:textSize="@dimen/textSize35sp" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/coffee_brand_tv"
+    android:layout_centerInParent="true"
+    android:fontFamily="@font/montserrat"
+    android:text="SEASONAL BLEND"
+    android:textColor="@color/colorWhite" />
+
+  <TextView
+    android:id="@+id/coffee_brand_tv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_centerInParent="true"
+    android:layout_marginBottom="30dp"
+    android:fontFamily="@font/playfairdisplay"
+    android:text="Kati Kati Blend"
+    android:textColor="@color/colorWhite"
+    android:textSize="@dimen/textSize40sp" />
+
+</RelativeLayout>

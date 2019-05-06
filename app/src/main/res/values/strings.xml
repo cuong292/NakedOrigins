@@ -1,3 +1,7 @@
 <resources>
   <string name="app_name">NakedOrigins</string>
+  <string name="product_description">100% of your contributions to the
+    Farmer’s Fund and through this app will go towards the coffee farmers.</string>
+  <string name="product_explore">Explore The History Of Your Coffee</string>
+  <string name="process">Ground yesterday, your cup of Kati Kati blend was brewed at 95 C, to extract all the flavour from the coffee.</string>
 </resources>

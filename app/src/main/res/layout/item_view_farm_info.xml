@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginBottom="10dp"
+  android:orientation="vertical">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+      android:id="@+id/farm_name_tv"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="2"
+      android:fontFamily="@font/playfairdisplay"
+      android:text="Azizi Okoye’s Farm"
+      android:textColor="@color/colorBlack"
+      android:textSize="@dimen/textSize35sp" />
+
+    <LinearLayout
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:orientation="horizontal">
+
+    <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_pie_graph" />
+
+    <TextView
+      android:id="@+id/farm_description_tv"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:paddingStart="5dp"
+      android:paddingLeft="5dp"
+      android:text="Contributed to 45% of the Kati Kati Blend"
+      android:textColor="@color/colorSemiBlack"
+      android:textSize="@dimen/textSize15sp" />
+
+    <LinearLayout
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:gravity="end">
+
+      <ImageView
+        android:id="@+id/farm_detail_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:src="@drawable/ic_arrow_right" />
+    </LinearLayout>
+  </LinearLayout>
+
+</LinearLayout>

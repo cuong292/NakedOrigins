@@ -161,8 +161,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         addToBackStack, tag, false);
   }
 
+  public void addFragmentWithCustomAnim(int containerId, BaseFragment fragment, boolean addToBackStack,
+                                        String tag, int animIn, int animOut) {
+    ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, containerId,
+        addToBackStack, tag, false, animIn, animOut);
+  }
+
   public void addChildFragment(int containerId, FragmentManager fragmentManager, BaseFragment fragment, boolean addToBackStack,
-                          String tag, boolean loadExisted) {
+                               String tag, boolean loadExisted) {
     ActivityUtils.addFragmentToActivity(fragmentManager, fragment, containerId,
         addToBackStack, tag, loadExisted);
   }

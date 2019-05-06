@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <com.example.admin.nakedorigins.customview.NonSwipeableViewPager
+    android:id="@+id/product_view_pager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:layout_centerInParent="true"
+      android:gravity="center"
+      android:fontFamily="@font/playfairdisplay"
+      android:padding="30dp"
+      android:text="@string/product_description"
+      android:textColor="@color/colorBlack"
+      android:textSize="@dimen/textSize20sp" />
+
+    <TextView
+      android:id="@+id/searching_tv"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_centerInParent="true"
+      android:layout_marginBottom="30dp"
+      android:background="@drawable/rounded_corner_10dp_tv"
+      android:fontFamily="@font/montserrat"
+      android:padding="20dp"
+      android:text="Searching for coffee.."
+      android:textColor="@color/colorBlack"
+      android:textSize="@dimen/textSize15sp" />
+  </RelativeLayout>
+</RelativeLayout>

@@ -70,6 +70,10 @@ public abstract class Presenter<V extends IView, I extends IInteractor>
     mContainerView.pushView(mView);
   }
 
+  public void pushViewWithAnimation(int animIn,int animOut){
+    mContainerView.pushViewWithAnimation(mView,animIn,animOut);
+  }
+
   @Override
   public void pushChildView(int frameId, FragmentManager childFragmentManager) {
     if (getFragment() != null) {
