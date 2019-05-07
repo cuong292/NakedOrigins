@@ -2,10 +2,12 @@ package com.example.admin.nakedorigins.screens.about;
 
 import android.view.View;
 
+import com.example.admin.nakedorigins.screens.SplashActivity;
 import com.example.admin.nakedorigins.screens.main.MainPresenter;
 import com.gemvietnam.base.viper.ViewFragment;
 import com.example.admin.nakedorigins.R;
 import com.gemvietnam.base.viper.interfaces.ContainerView;
+import com.gemvietnam.utils.ActivityUtils;
 
 import butterknife.BindView;
 
@@ -31,7 +33,8 @@ public class AboutFragment extends ViewFragment<AboutContract.Presenter> impleme
     view.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        new MainPresenter((ContainerView) getActivity()).pushViewWithAnimation(R.anim.fade_in,R.anim.fade_out);
+        ActivityUtils.startActivity(getContext(), SplashActivity.class);
+        getActivity().finish();
       }
     });
   }

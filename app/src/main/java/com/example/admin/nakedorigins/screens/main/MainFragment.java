@@ -1,11 +1,13 @@
 package com.example.admin.nakedorigins.screens.main;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.admin.nakedorigins.customview.MenuNavigationView;
 import com.example.admin.nakedorigins.customview.NonSwipeNormalViewPager;
 import com.example.admin.nakedorigins.customview.NonSwipeableViewPager;
+import com.example.admin.nakedorigins.data.pref.PrefWrapper;
 import com.example.admin.nakedorigins.screens.about.AboutPresenter;
 import com.example.admin.nakedorigins.screens.main.discover.DiscoverFragment;
 import com.example.admin.nakedorigins.screens.main.discover.DiscoverPresenter;
@@ -32,6 +34,7 @@ public class MainFragment extends ViewFragment<MainContract.Presenter> implement
   private SupportPresenter firstPresenter;
   private JourneyPresenter secondPresenter;
   private DiscoverPresenter thirdPresenter;
+  private PrefWrapper wrapper;
 
   public static MainFragment getInstance() {
     return new MainFragment();
@@ -43,8 +46,14 @@ public class MainFragment extends ViewFragment<MainContract.Presenter> implement
   }
 
   @Override
+  protected void parseArgs(Bundle args) {
+    super.parseArgs(args);
+  }
+
+  @Override
   public void initLayout() {
     super.initLayout();
+    wrapper = new PrefWrapper(getViewContext());
     FragmentStatePagerAdapter pagerAdapter = new FragmentStatePagerAdapter(getChildFragmentManager()) {
       @Override
       public Fragment getItem(int i) {
@@ -55,7 +64,7 @@ public class MainFragment extends ViewFragment<MainContract.Presenter> implement
             }
             return firstPresenter.getFragment();
           case 1:
-            if (secondPresenter == null ) {
+            if (secondPresenter == null) {
               secondPresenter = new JourneyPresenter((ContainerView) getActivity());
             }
             return secondPresenter.getFragment();
@@ -76,5 +85,7 @@ public class MainFragment extends ViewFragment<MainContract.Presenter> implement
     mViewPager.setAdapter(pagerAdapter);
 //    mViewPager.setPageTransformer(false, new AlphaPagerTransformer());
     mBottomNavigator.setupWithViewPager(mViewPager);
+    mViewPager.setCurrentItem(wrapper.getCurrentTab());
+    wrapper.setCurrentTab(0);
   }
 }

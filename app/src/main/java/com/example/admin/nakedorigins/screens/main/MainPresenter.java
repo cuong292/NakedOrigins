@@ -15,6 +15,10 @@ public class MainPresenter extends Presenter<MainContract.View, MainContract.Int
     super(containerView);
   }
 
+  public MainPresenter(ContainerView containerView, Bundle data) {
+    super(containerView, data);
+  }
+
   @Override
   public MainContract.View onCreateView(Bundle data) {
     return MainFragment.getInstance();

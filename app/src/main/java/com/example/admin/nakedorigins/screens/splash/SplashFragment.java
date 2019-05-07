@@ -22,8 +22,6 @@ import butterknife.ButterKnife;
 public class SplashFragment extends ViewFragment<SplashContract.Presenter> implements SplashContract.View {
   @BindView(R.id.product_view_pager)
   NonSwipeableViewPager mProductVp;
-  @BindView(R.id.searching_tv)
-  TextView mSearchingTv;
 
   private SplashProductAdapter mProductAdapter;
   private Timer timer;
@@ -44,28 +42,10 @@ public class SplashFragment extends ViewFragment<SplashContract.Presenter> imple
     mProductAdapter = new SplashProductAdapter(new SplashProductAdapter.OnProductClicked() {
       @Override
       public void onClick() {
-        AlphaAnimation anim = new AlphaAnimation(1.0f, 0.0f);
-        anim.setDuration(1000);
-        anim.setRepeatCount(0);
-        mSearchingTv.startAnimation(anim);
-        mSearchingTv.setVisibility(View.GONE);
-        mProductVp.setCurrentItem(1);
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-          @Override
-          public void run() {
-            redirectToAboutFragment();
-          }
-        }, 1500);
+
       }
     });
     mProductVp.setAdapter(mProductAdapter);
   }
 
-  public void redirectToAboutFragment() {
-    if (timer != null) {
-      timer.cancel();
-    }
-    new AboutPresenter((ContainerView) getActivity()).pushViewWithAnimation(R.anim.fade_in, R.anim.fade_out);
-  }
 }
