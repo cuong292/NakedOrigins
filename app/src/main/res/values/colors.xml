@@ -6,9 +6,12 @@
   <color name="colorBlack">#000000</color>
   <color name="colorTransparent">#00FFFFFF</color>
   <color name="colorSemiTransparent">#56FFFFFF</color>
+  <color name="colorTransparentParent">#80000000</color>
   <color name="colorWhite">#FDFDFD</color>
   <color name="colorPatel">#F7EDDF</color>
   <color name="colorSemiBlack">#202020</color>
   <color name="colorSemiiBlack">#030303</color>
   <color name="colorSemiGray">#595650</color>
+  <color name="colorMenuDisable">#727272</color>
+  <color name="colorMenuEnable">#DE9A7C</color>
 </resources>

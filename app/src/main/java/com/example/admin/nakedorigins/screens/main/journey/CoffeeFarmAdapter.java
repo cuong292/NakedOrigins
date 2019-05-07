@@ -1,4 +1,4 @@
-package com.example.admin.nakedorigins.screens.main.discover;
+package com.example.admin.nakedorigins.screens.main.journey;
 
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -6,14 +6,17 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.admin.nakedorigins.R;
-import com.example.admin.nakedorigins.screens.dto.FarmCoffeeDTO;
+import com.example.admin.nakedorigins.data.dto.FarmCoffeeDTO;
 
 import java.util.List;
 
 public class CoffeeFarmAdapter extends BaseQuickAdapter<FarmCoffeeDTO, BaseViewHolder> {
 
-  public CoffeeFarmAdapter(@Nullable List<FarmCoffeeDTO> data) {
+  private OnDetailClick clicked;
+
+  public CoffeeFarmAdapter(@Nullable List<FarmCoffeeDTO> data,OnDetailClick onDetailClick) {
     super(R.layout.item_view_farm_info, data);
+    this.clicked = onDetailClick;
   }
 
   @Override
@@ -23,8 +26,12 @@ public class CoffeeFarmAdapter extends BaseQuickAdapter<FarmCoffeeDTO, BaseViewH
     helper.getView(R.id.farm_detail_iv).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-
+        clicked.onClick();
       }
     });
+  }
+
+  public interface OnDetailClick{
+    void onClick();
   }
 }

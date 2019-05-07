@@ -1,0 +1,94 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorPatel">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:padding="30dp">
+
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/playfairdisplay"
+        android:gravity="center"
+        android:text="Meet Azizi Okoye"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textSize35sp"
+        android:textStyle="bold" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        android:fontFamily="@font/playfairdisplay"
+        android:gravity="center"
+        android:text="“You never know when coffee rust will affect my crops.”"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textSize15sp" />
+
+      <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/farmer" />
+
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:padding="10dp"
+        android:text="@string/farmer_detail"
+        android:textColor="@color/colorSemiBlack"
+        android:textSize="@dimen/textSize15sp" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat"
+        android:text="LOVED YOUR COFFEE?" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/playfairdisplay"
+        android:gravity="center"
+        android:text="Give The Farmers A High Five to Show Your Appreciation"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textSize25sp" />
+
+      <ImageView
+        android:id="@+id/high_five_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/highfive" />
+    </LinearLayout>
+
+    <TextView
+      android:id="@+id/cancel_tv"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:layout_margin="20dp"
+      android:background="@drawable/bg_white_solid"
+      android:padding="20dp"
+      android:text="CLOSE"
+      android:textColor="@color/colorSemiBlack" />
+  </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

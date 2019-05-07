@@ -1,23 +1,17 @@
 package com.example.admin.nakedorigins.screens.main;
 
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.example.admin.nakedorigins.customview.MenuNavigationView;
-import com.example.admin.nakedorigins.customview.NonSwipeNoAnimationViewPager;
+import com.example.admin.nakedorigins.customview.NonSwipeNormalViewPager;
 import com.example.admin.nakedorigins.customview.NonSwipeableViewPager;
 import com.example.admin.nakedorigins.screens.about.AboutPresenter;
 import com.example.admin.nakedorigins.screens.main.discover.DiscoverFragment;
 import com.example.admin.nakedorigins.screens.main.discover.DiscoverPresenter;
 import com.example.admin.nakedorigins.screens.main.journey.JourneyFragment;
 import com.example.admin.nakedorigins.screens.main.journey.JourneyPresenter;
+import com.example.admin.nakedorigins.screens.main.support.SupportPresenter;
 import com.example.admin.nakedorigins.screens.main.support.supportmessage.SupportMessagePresenter;
 import com.example.admin.nakedorigins.viewutilities.AlphaPagerTransformer;
 import com.gemvietnam.base.viper.ViewFragment;
@@ -33,9 +27,9 @@ public class MainFragment extends ViewFragment<MainContract.Presenter> implement
   @BindView(R.id.bottom_navigator)
   MenuNavigationView mBottomNavigator;
   @BindView(R.id.main_vp)
-  NonSwipeableViewPager mViewPager;
+  NonSwipeNormalViewPager mViewPager;
 
-  private SupportMessagePresenter firstPresenter;
+  private SupportPresenter firstPresenter;
   private JourneyPresenter secondPresenter;
   private DiscoverPresenter thirdPresenter;
 
@@ -57,11 +51,11 @@ public class MainFragment extends ViewFragment<MainContract.Presenter> implement
         switch (i) {
           case 0:
             if (firstPresenter == null) {
-              firstPresenter = new SupportMessagePresenter((ContainerView) getActivity());
+              firstPresenter = new SupportPresenter((ContainerView) getActivity());
             }
             return firstPresenter.getFragment();
           case 1:
-            if (secondPresenter == null) {
+            if (secondPresenter == null ) {
               secondPresenter = new JourneyPresenter((ContainerView) getActivity());
             }
             return secondPresenter.getFragment();

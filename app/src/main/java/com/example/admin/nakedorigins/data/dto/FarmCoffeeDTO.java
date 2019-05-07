@@ -1,4 +1,4 @@
-package com.example.admin.nakedorigins.screens.dto;
+package com.example.admin.nakedorigins.data.dto;
 
 public class FarmCoffeeDTO {
   String farmName;

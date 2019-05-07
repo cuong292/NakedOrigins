@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -197,6 +198,7 @@ public class TagView extends RelativeLayout {
           if (mClickListener != null) {
             mClickListener.onTagClick(tag, position);
           }
+          v.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_border_black_pink_solid));
         }
       });
 

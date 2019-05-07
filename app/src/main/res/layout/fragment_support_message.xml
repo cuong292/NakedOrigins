@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
-  android:layout_height="match_parent">
+  android:layout_height="match_parent"
+  android:background="@color/colorWhite">
 
   <LinearLayout
     android:layout_width="match_parent"
@@ -12,29 +13,31 @@
     <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginStart="40dp"
-      android:layout_marginEnd="40dp"
       android:layout_marginBottom="10dp"
+      android:layout_marginEnd="40dp"
+      android:layout_marginStart="40dp"
       android:fontFamily="@font/playfairdisplay"
       android:gravity="center"
       android:text="Say Something Nice To The Farmers"
+      android:textColor="@color/colorSemiBlack"
       android:textSize="@dimen/textSize30sp" />
 
     <EditText
+      android:id="@+id/support_message_edt"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginStart="20dp"
       android:layout_marginEnd="20dp"
-      android:background="@drawable/bg_border_red"
+      android:layout_marginStart="20dp"
+      android:background="@drawable/bg_border_black"
       android:padding="10dp" />
 
     <ScrollView
       android:layout_width="match_parent"
       android:layout_height="0dp"
-      android:layout_marginLeft="20dp"
-      android:layout_marginTop="20dp"
-      android:layout_marginRight="20dp"
       android:layout_marginBottom="@dimen/dp_10"
+      android:layout_marginLeft="20dp"
+      android:layout_marginRight="20dp"
+      android:layout_marginTop="20dp"
       android:layout_weight="1">
 
       <com.example.admin.nakedorigins.customview.TagView
@@ -45,13 +48,42 @@
   </LinearLayout>
 
   <TextView
+    android:id="@+id/skip_tv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:layout_margin="20dp"
     android:background="@drawable/bg_solid_pink"
+    android:fontFamily="@font/montserrat"
     android:gravity="center"
     android:padding="20dp"
-    android:text="Skip"
+    android:text="SKIP"
     android:textSize="@dimen/textSize15sp" />
+
+  <LinearLayout
+    android:id="@+id/send_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_margin="20dp"
+    android:background="@drawable/bg_solid_black"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="20dp"
+    android:visibility="gone">
+
+    <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_send_button" />
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="5dp"
+      android:fontFamily="@font/montserrat"
+      android:text="SEND"
+      android:textColor="@color/colorWhite"
+      android:textSize="@dimen/textSize15sp" />
+  </LinearLayout>
 </RelativeLayout>

@@ -1,11 +1,11 @@
-package com.example.admin.nakedorigins.screens.main.discover;
+package com.example.admin.nakedorigins.screens.main.journey;
 
 import android.support.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.admin.nakedorigins.R;
-import com.example.admin.nakedorigins.screens.dto.ProcessDTO;
+import com.example.admin.nakedorigins.data.dto.ProcessDTO;
 
 import java.util.List;
 
