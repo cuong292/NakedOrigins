@@ -63,7 +63,7 @@ public class CustomRadarView extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		Log.e("onDraw", "draw canvas");
+		//Log.e("onDraw", "draw canvas");
 
 		canvas.drawLine(Ox - maxCoordinate - 50, Oy, Ox + maxCoordinate + 50, Oy, paint);
 		canvas.drawLine(Ox, Oy - maxCoordinate - 50, Ox, Oy + maxCoordinate + 50, paint);
@@ -113,12 +113,12 @@ public class CustomRadarView extends View {
 
 			case MotionEvent.ACTION_UP:
 				if (typePoint != TypePoint.NONE && dataChangeListener != null) {
-					int bodyPercent = body.x / maxCoordinate * 100;
-					int aromaPercent = aroma.x / maxCoordinate * 100;
-					int acidityPercent = acidity.y / maxCoordinate * 100;
-					int bitternessPercent = bitterness.y / maxCoordinate * 100;
+					float bodyPercent = ((float) (Ox - body.x)) / maxCoordinate * 100;
+					float aromaPercent = (float) (aroma.x - Ox) / maxCoordinate * 100;
+					float acidityPercent = ((float) (Oy - acidity.y)) / maxCoordinate * 100;
+					float bitternessPercent = ((float) (bitterness.y - Oy)) / maxCoordinate * 100;
 
-					dataChangeListener.onChangeFinish(bodyPercent, acidityPercent, aromaPercent, bitternessPercent);
+					dataChangeListener.onChangeFinish((int) bodyPercent, (int) acidityPercent, (int) aromaPercent, (int) bitternessPercent);
 				}
 
 				typePoint = TypePoint.NONE;
@@ -320,8 +320,8 @@ public class CustomRadarView extends View {
 	}
 
 	private void setDateX(Point point, float percent, int maxX, int minX, int key) {
-		if (percent > 20) {
-			if (percent < 80) {
+		if (percent > 10) {
+			if (percent < 90) {
 				point.x = Ox + (int) (maxCoordinate * percent / 100) * key;
 
 			} else {
@@ -337,8 +337,8 @@ public class CustomRadarView extends View {
 	}
 
 	private void setDateY(Point point, float percent, int maxY, int minY, int key) {
-		if (percent > 20) {
-			if (percent < 80) {
+		if (percent > 10) {
+			if (percent < 90) {
 				point.y = Oy + (int) (maxCoordinate * percent / 100) * key;
 
 			} else {

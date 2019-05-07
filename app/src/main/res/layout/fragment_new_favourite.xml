@@ -1,12 +1,12 @@
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorDiscoverBackground">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorDiscoverBackground"
         android:orientation="vertical">
 
         <TextView
@@ -24,12 +24,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/title_second"
+            android:id="@+id/cf_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/playfairdisplay"
             android:text="@string/new_favourite"
+            android:textAllCaps="true"
             android:textColor="@color/colorPatel"
             android:textSize="32sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -49,7 +50,7 @@
             app:layout_constraintDimensionRatio="5:3"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_second" />
+            app:layout_constraintTop_toBottomOf="@+id/cf_name" />
 
         <com.example.admin.nakedorigins.customview.CustomRadarView
             android:id="@+id/custom_radar"

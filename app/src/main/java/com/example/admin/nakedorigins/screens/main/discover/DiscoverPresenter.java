@@ -15,9 +15,13 @@ public class DiscoverPresenter extends Presenter<DiscoverContract.View, Discover
     super(containerView);
   }
 
+  public DiscoverPresenter(ContainerView containerView, Bundle data) {
+    super(containerView, data);
+  }
+
   @Override
   public DiscoverContract.View onCreateView(Bundle data) {
-    return DiscoverFragment.getInstance();
+    return DiscoverFragment.getInstance(data);
   }
 
   @Override
