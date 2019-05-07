@@ -1,13 +1,17 @@
 package com.example.admin.nakedorigins;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.example.admin.nakedorigins.screens.SplashActivity;
 import com.gemvietnam.utils.ActivityUtils;
+import com.gemvietnam.utils.PermissionUtils;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -35,7 +39,9 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
     mScannerView.setBorderCornerRadius(20);
     mScannerView.setBorderStrokeWidth(20);
     mScannerView.setLaserEnabled(false);
-    mScannerView.startCamera();
+    if (PermissionUtils.checkToRequest(this, Manifest.permission.CAMERA, 200)) {
+      mScannerView.startCamera();
+    }
   }
 
   @Override
@@ -52,5 +58,13 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
   @Override
   public void handleResult(Result rawResult) {
     ActivityUtils.startActivity(this, SplashActivity.class);
+  }
+
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+      mScannerView.startCamera();
+    }
   }
 }

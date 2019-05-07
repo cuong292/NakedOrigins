@@ -21,12 +21,7 @@ public class PermissionUtils {
 
     if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
       // Should we show an explanation?
-      if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
-        Log.i("PermissionUtils", "Should show request permission rationale");
-      } else {
-        ActivityCompat.requestPermissions(activity, new String[]{permission}, requestCode);
-      }
-
+      ActivityCompat.requestPermissions(activity, new String[]{permission}, requestCode);
       return false;
     } else {
       return true;
