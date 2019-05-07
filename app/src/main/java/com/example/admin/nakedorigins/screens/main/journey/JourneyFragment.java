@@ -33,7 +33,7 @@ public class JourneyFragment extends ViewFragment<JourneyContract.Presenter> imp
 
   @Override
   protected int getLayoutId() {
-    return R.layout.fragment_discover;
+    return R.layout.fragment_journey;
   }
 
   @Override

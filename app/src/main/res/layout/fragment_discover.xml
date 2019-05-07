@@ -1,65 +1,173 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent">
-
-  <android.support.v4.widget.NestedScrollView
-    android:id="@+id/root_view"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPatel">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content">
-
-      <ImageView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:src="@drawable/anh123"
-        android:scaleType="fitXY"
-        android:layout_height="220dp" />
-
-      <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_discover"
+        android:paddingBottom="20dp">
 
         <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="40dp"
-          android:fontFamily="@font/montserrat"
-          android:gravity="center"
-          android:text="TRACKING THE SOURCE"
-          android:textColor="@color/colorPatel"
-          android:textSize="@dimen/textSize20sp" />
+            android:id="@+id/title_first"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="WHAT YOU'RE DRINKING"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textSize20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center_horizontal"
-          android:layout_marginBottom="60dp"
-          android:layout_marginEnd="40dp"
-          android:layout_marginStart="40dp"
-          android:layout_marginTop="10dp"
-          android:fontFamily="@font/playfairdisplay"
-          android:gravity="center"
-          android:text="Where’s My Coffee From?"
-          android:textColor="@color/colorPatel"
-          android:textSize="@dimen/textSize40sp" />
+            android:id="@+id/cf_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="60dp"
+            android:fontFamily="@font/playfairdisplay"
+            android:gravity="center"
+            android:text="KATI KATI BLEND PROFILE"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textSize40sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_first" />
 
-        <android.support.v7.widget.RecyclerView
-          android:id="@+id/farm_coffee_rv"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:padding="30dp" />
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:text="@string/kati_kati_description"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cf_name" />
 
-        <android.support.v7.widget.RecyclerView
-          android:id="@+id/coffee_process_rv"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" />
-      </LinearLayout>
+        <TextView
+            android:id="@+id/roast_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/playfairdisplay"
+            android:text="ROAST"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description" />
 
-    </RelativeLayout>
-  </android.support.v4.widget.NestedScrollView>
+        <TextView
+            android:id="@+id/roast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Medium"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/roast_title" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tasting_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/playfairdisplay"
+            android:text="@string/tasting_note"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/roast" />
+
+        <TextView
+            android:id="@+id/tasting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Citrus Spice"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tasting_title" />
+
+        <TextView
+            android:id="@+id/topping_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/playfairdisplay"
+            android:text="COMPLEMENTARY FLAVOURS"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tasting" />
+
+        <TextView
+            android:id="@+id/topping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Lemon, orange, dark chocolate"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topping_title" />
+
+
+        <TextView
+            android:id="@+id/acidity_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/playfairdisplay"
+            android:text="ACIDITY"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="14sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/roast_title" />
+
+        <TextView
+            android:id="@+id/body_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/playfairdisplay"
+            android:text="BODY"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="14sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tasting_title" />
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bg_solid_black"
+            android:text="FIND YOUR NEXT COFFEE"
+            android:textColor="@color/colorPatel"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topping" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>
