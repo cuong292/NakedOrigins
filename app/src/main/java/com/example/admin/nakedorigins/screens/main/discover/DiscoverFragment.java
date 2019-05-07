@@ -2,9 +2,11 @@ package com.example.admin.nakedorigins.screens.main.discover;
 
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.admin.nakedorigins.data.dto.FarmCoffeeDTO;
 import com.example.admin.nakedorigins.data.dto.ProcessDTO;
+import com.example.admin.nakedorigins.screens.main.discover.newfavourite.NewFavouritePresenter;
 import com.example.admin.nakedorigins.screens.main.farmdetail.FarmDetailPresenter;
 import com.example.admin.nakedorigins.screens.main.journey.CoffeeFarmAdapter;
 import com.example.admin.nakedorigins.screens.main.journey.ProcessAdapter;
@@ -47,7 +49,8 @@ public class DiscoverFragment extends ViewFragment<DiscoverContract.Presenter> i
     CoffeeFarmAdapter adapter = new CoffeeFarmAdapter(items, new CoffeeFarmAdapter.OnDetailClick() {
       @Override
       public void onClick() {
-        new FarmDetailPresenter((ContainerView) getActivity()).pushView();
+        //new FarmDetailPresenter((ContainerView) getActivity()).pushView();
+        new NewFavouritePresenter((ContainerView) getViewContext()).pushView();
       }
     });
     RecyclerUtils.setupVerticalRecyclerView(getViewContext(), mFarmRv);
