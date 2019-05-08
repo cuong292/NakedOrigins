@@ -14,7 +14,7 @@
     android:supportsRtl="true"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-    <activity android:name=".MainActivity">
+    <activity android:name=".screens.SplashActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +22,6 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".screens.SplashActivity"></activity>
   </application>
 
 </manifest>

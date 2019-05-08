@@ -33,6 +33,7 @@ public class CustomRadarView extends View {
 	private float touchX, touchY;
 	private float bodyP, acidityP, aromaP, bitternessP;
 	private boolean isStartChange = false;
+	private int rPoint = 30;
 
 	private enum TypePoint {
 		NONE, BODY, ACIDITY, AROMA, BITTERNESS
@@ -88,15 +89,15 @@ public class CustomRadarView extends View {
 			path.lineTo(bitterness.x, bitterness.y);
 			canvas.drawPath(path, paintPolygon);
 
-			canvas.drawCircle(body.x, body.y, 25, paint);
-			canvas.drawCircle(acidity.x, acidity.y, 25, paint);
-			canvas.drawCircle(aroma.x, aroma.y, 25, paint);
-			canvas.drawCircle(bitterness.x, bitterness.y, 25, paint);
+			canvas.drawCircle(body.x, body.y, rPoint, paint);
+			canvas.drawCircle(acidity.x, acidity.y, rPoint, paint);
+			canvas.drawCircle(aroma.x, aroma.y, rPoint, paint);
+			canvas.drawCircle(bitterness.x, bitterness.y, rPoint, paint);
 
-			canvas.drawCircle(body.x, body.y, 22, paintCircle);
-			canvas.drawCircle(acidity.x, acidity.y, 22, paintCircle);
-			canvas.drawCircle(aroma.x, aroma.y, 22, paintCircle);
-			canvas.drawCircle(bitterness.x, bitterness.y, 22, paintCircle);
+			canvas.drawCircle(body.x, body.y, rPoint - 3, paintCircle);
+			canvas.drawCircle(acidity.x, acidity.y, rPoint - 3, paintCircle);
+			canvas.drawCircle(aroma.x, aroma.y, rPoint - 3, paintCircle);
+			canvas.drawCircle(bitterness.x, bitterness.y, rPoint - 3, paintCircle);
 		}
 	}
 
@@ -188,11 +189,15 @@ public class CustomRadarView extends View {
 		setMeasuredDimension(size, size);
 	}
 
-	public void setDataView(float bodyPercent, float acidityPercent, float aromaPercent, float bitternessPercent) {
+	public void setDataView(float bodyPercent, float acidityPercent, float aromaPercent, float bitternessPercent, boolean isUpdate) {
 		bodyP = bodyPercent;
 		aromaP = aromaPercent;
 		acidityP = acidityPercent;
 		bitternessP = bitternessPercent;
+
+		if (isUpdate) {
+			requestViewChange();
+		}
 	}
 
 	public void setDataChangeListener(OnDataChangeListener listener) {
@@ -263,7 +268,7 @@ public class CustomRadarView extends View {
 	}
 
 	private boolean inRange(float x, float y, Point point) {
-		return ((x <= (point.x + 30)) && (x >= (point.x - 30)) && (y < (point.y + 30)) && (y >= (point.y - 30)));
+		return ((x <= (point.x + 35)) && (x >= (point.x - 35)) && (y < (point.y + 35)) && (y >= (point.y - 35)));
 	}
 
 	private void updateXPoint(float currentX, Point point, int maxX, int minX) {
