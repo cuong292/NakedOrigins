@@ -71,12 +71,12 @@ public class QrCodeFragment extends ViewFragment<QrCodeContract.Presenter> imple
       }
     });
 
-//    mSearchingTv.setOnClickListener(new View.OnClickListener() {
-//      @Override
-//      public void onClick(View v) {
-//        new AboutPresenter((ContainerView) getActivity()).pushViewWithAnimation(R.anim.fade_in, R.anim.fade_out);
-//      }
-//    });
+    mSearchingTv.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        new AboutPresenter((ContainerView) getActivity()).pushViewWithAnimation(R.anim.fade_in, R.anim.fade_out);
+      }
+    });
     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
     transaction.add(R.id.camera_root_layout, fragment);
     transaction.commit();

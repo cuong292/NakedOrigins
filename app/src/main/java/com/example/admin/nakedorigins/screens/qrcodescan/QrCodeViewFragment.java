@@ -33,7 +33,6 @@ public class QrCodeViewFragment extends Fragment implements ZXingScannerView.Res
     mScannerView.setBorderCornerRadius(20);
     mScannerView.setBorderStrokeWidth(20);
     mScannerView.setLaserEnabled(false);
-    mScannerView.setMaskColor(Color.TRANSPARENT);
     if (!PermissionUtils.needRequestPermissions(container.getContext(), this, new String[]{Manifest.permission.CAMERA}, 200)) {
       mScannerView.startCamera();
     }

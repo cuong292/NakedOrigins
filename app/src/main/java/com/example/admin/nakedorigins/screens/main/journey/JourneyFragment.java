@@ -3,6 +3,7 @@ package com.example.admin.nakedorigins.screens.main.journey;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.admin.nakedorigins.data.dto.FarmCoffeeDTO;
@@ -12,6 +13,7 @@ import com.gemvietnam.base.viper.ViewFragment;
 import com.example.admin.nakedorigins.R;
 import com.gemvietnam.base.viper.interfaces.ContainerView;
 import com.gemvietnam.utils.RecyclerUtils;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,12 @@ public class JourneyFragment extends ViewFragment<JourneyContract.Presenter> imp
   TextView questionTv;
   @BindView(R.id.process_detail1_tv)
   TextView process1;
+  @BindView(R.id.header_bg)
+  ImageView headerIv;
+  @BindView(R.id.coffee1)
+  ImageView coffeeIv;
+  @BindView(R.id.coffee2)
+  ImageView coffee2Iv;
 
   public static JourneyFragment getInstance() {
     return new JourneyFragment();
@@ -60,5 +68,8 @@ public class JourneyFragment extends ViewFragment<JourneyContract.Presenter> imp
     processTv.setText(Html.fromHtml("The " + "<i>" + "Final" + "</i>" + " Touches"));
     questionTv.setText(Html.fromHtml("Where’s My " + "<i>" + "Coffee" + "</i>" + " From?"));
     process1.setText(Html.fromHtml(getString(R.string.process2)));
+    Picasso.with(getViewContext()).load(R.drawable.header_image).into(headerIv);
+    Picasso.with(getViewContext()).load(R.drawable.may_cafe).into(coffeeIv);
+    Picasso.with(getViewContext()).load(R.drawable.may_cafe).into(coffee2Iv);
   }
 }
