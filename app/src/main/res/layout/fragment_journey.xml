@@ -1,65 +1,208 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/root_view"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/journey_bg">
+
+  <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-  <android.support.v4.widget.NestedScrollView
-      android:id="@+id/root_view"
+    <TextView
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:background="@color/colorPatel">
+      android:layout_height="wrap_content"
+      android:layout_marginTop="40dp"
+      android:fontFamily="@font/montserrat"
+      android:gravity="center"
+      android:text="TRACKING THE SOURCE"
+      android:textColor="@color/colorPatel"
+      android:textSize="@dimen/textSize20sp" />
 
-    <RelativeLayout
+    <TextView
+      android:id="@+id/question_tv"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginStart="40dp"
+      android:layout_marginEnd="40dp"
+      android:layout_marginBottom="100dp"
+      android:fontFamily="@font/playfair_display_regular"
+      android:gravity="center"
+      android:textColor="@color/colorPatel"
+      android:textSize="@dimen/textSize40sp" />
+
+    <android.support.v7.widget.RecyclerView
+      android:id="@+id/farm_coffee_rv"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="60dp"
+      android:layout_marginEnd="60dp" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="THE PROCESS"
+        android:textColor="@color/colorSemiGray"
+        android:textSize="@dimen/textSize15sp" />
+
+      <TextView
+        android:id="@+id/process_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="50dp"
+        android:text="Turning The"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/playfair_display_regular"
+        android:gravity="center"
+        android:textColor="@color/colorSemiGray"
+        android:textSize="@dimen/textSize40sp" />
+
+      <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-      <ImageView
-          android:layout_width="match_parent"
-          android:src="@drawable/anh123"
-          android:scaleType="fitXY"
-          android:layout_height="220dp" />
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/process1_tv"
+          android:layout_alignParentStart="true">
 
-      <LinearLayout
+          <ImageView
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            android:src="@drawable/may_cafe" />
+        </LinearLayout>
+
+        <TextView
+          android:id="@+id/process1_tv"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:orientation="vertical">
+          android:layout_marginStart="40dp"
+          android:layout_marginEnd="50dp"
+          android:fontFamily="@font/playfair_display_regular"
+          android:gravity="end"
+          android:text="The Drying Process"
+          android:textColor="@color/colorSemiBlack"
+          android:textSize="@dimen/textSize30sp" />
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/process1_tv"
+          android:layout_marginStart="40dp"
+          android:orientation="horizontal">
+
+          <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+          <TextView
+            android:id="@+id/process_detail1_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="50dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat_regular"
+            android:gravity="start"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="@dimen/textSize15sp" />
+
+
+        </LinearLayout>
+      </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:orientation="vertical"
+      android:layout_height="wrap_content">
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="THE PROCESS"
+        android:textColor="@color/colorSemiGray"
+        android:textSize="@dimen/textSize15sp" />
+
+      <TextView
+        android:id="@+id/process_name2_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/playfair_display_regular"
+        android:gravity="center"
+        android:textColor="@color/colorSemiGray"
+        android:textSize="@dimen/textSize40sp" />
+      <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/process_tv"
+          android:layout_alignParentEnd="true">
+
+          <ImageView
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            android:src="@drawable/may_cafe" />
+        </LinearLayout>
 
         <TextView
-            android:layout_width="match_parent"
+          android:id="@+id/process_tv"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="40dp"
+          android:layout_marginEnd="100dp"
+          android:fontFamily="@font/playfair_display_regular"
+          android:text="The Roasting &amp; Brewing Process"
+          android:textColor="@color/colorSemiBlack"
+          android:textSize="@dimen/textSize30sp" />
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/process_tv"
+          android:layout_marginStart="40dp"
+          android:orientation="horizontal">
+
+          <TextView
+            android:id="@+id/process_detail_tv"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center"
-            android:text="TRACKING THE SOURCE"
-            android:textColor="@color/colorPatel"
-            android:textSize="@dimen/textSize20sp" />
+            android:layout_weight="2"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/process"
+            android:textColor="@color/colorSemiBlack"
+            android:textSize="@dimen/textSize15sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+          <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="60dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/playfairdisplay"
-            android:gravity="center"
-            android:text="Where’s My Coffee From?"
-            android:textColor="@color/colorPatel"
-            android:textSize="@dimen/textSize40sp" />
+            android:layout_weight="3" />
+        </LinearLayout>
+      </RelativeLayout>
+    </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/farm_coffee_rv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="30dp" />
+  </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/coffee_process_rv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-      </LinearLayout>
-
-    </RelativeLayout>
-  </android.support.v4.widget.NestedScrollView>
-
-</LinearLayout>

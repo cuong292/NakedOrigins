@@ -2,6 +2,8 @@ package com.example.admin.nakedorigins.screens.main.journey;
 
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.widget.TextView;
 
 import com.example.admin.nakedorigins.data.dto.FarmCoffeeDTO;
 import com.example.admin.nakedorigins.data.dto.ProcessDTO;
@@ -24,8 +26,12 @@ public class JourneyFragment extends ViewFragment<JourneyContract.Presenter> imp
   RecyclerView mFarmRv;
   @BindView(R.id.root_view)
   NestedScrollView view;
-  @BindView(R.id.coffee_process_rv)
-  RecyclerView mCoffeeProcessRv;
+  @BindView(R.id.process_name2_tv)
+  TextView processTv;
+  @BindView(R.id.question_tv)
+  TextView questionTv;
+  @BindView(R.id.process_detail1_tv)
+  TextView process1;
 
   public static JourneyFragment getInstance() {
     return new JourneyFragment();
@@ -49,13 +55,10 @@ public class JourneyFragment extends ViewFragment<JourneyContract.Presenter> imp
       }
     });
     RecyclerUtils.setupVerticalRecyclerView(getViewContext(), mFarmRv);
-    RecyclerUtils.setupVerticalRecyclerView(getViewContext(), mCoffeeProcessRv);
     mFarmRv.setAdapter(adapter);
     mFarmRv.setNestedScrollingEnabled(false);
-    mCoffeeProcessRv.setNestedScrollingEnabled(false);
-    List<ProcessDTO> processItems = new ArrayList<>();
-    processItems.add(new ProcessDTO("The Final Touches", "The Brewing Process", "Ground yesterday, your cup of Kati Kati blend was brewed at 95 C, to extract all the flavour from the coffee."));
-    ProcessAdapter processAdapter = new ProcessAdapter(processItems);
-    mCoffeeProcessRv.setAdapter(processAdapter);
+    processTv.setText(Html.fromHtml("The " + "<i>" + "Final" + "</i>" + " Touches"));
+    questionTv.setText(Html.fromHtml("Where’s My " + "<i>" + "Coffee" + "</i>" + " From?"));
+    process1.setText(Html.fromHtml(getString(R.string.process2)));
   }
 }

@@ -4,6 +4,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,8 @@ public class SupportMessageFragment extends ViewFragment<SupportMessageContract.
   TextView tvSkip;
   @BindView(R.id.send_view)
   View sendView;
+  @BindView(R.id.close_iv)
+  ImageView closeIv;
 
   public static SupportMessageFragment getInstance() {
     return new SupportMessageFragment();
@@ -94,6 +97,13 @@ public class SupportMessageFragment extends ViewFragment<SupportMessageContract.
       @Override
       public void onClick(View v) {
         new SupportVideoPresenter((ContainerView) getActivity()).pushViewWithAnimation(R.anim.fade_in,R.anim.fade_out);
+      }
+    });
+
+    closeIv.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        mPresenter.back();
       }
     });
   }

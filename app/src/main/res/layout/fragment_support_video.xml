@@ -10,20 +10,35 @@
     android:layout_height="match_parent" />
 
   <ImageView
-    android:id="@+id/mute_iv"
+    android:id="@+id/close_iv"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentEnd="true"
     android:padding="20dp"
-    android:src="@drawable/ic_mute" />
+    android:src="@drawable/white_close" />
 
-  <SeekBar
-    android:id="@+id/progrees_seekbar"
+  <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_above="@+id/checkout_tv"
-    android:layout_marginEnd="@dimen/textSize20sp"
-    android:layout_marginStart="@dimen/textSize20sp" />
+    android:layout_above="@id/checkout_tv"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <SeekBar
+      android:id="@+id/progrees_seekbar"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/textSize20sp"
+      android:layout_weight="1" />
+
+    <ImageView
+      android:id="@+id/mute_iv"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_mute" />
+  </LinearLayout>
 
   <TextView
     android:id="@+id/checkout_tv"

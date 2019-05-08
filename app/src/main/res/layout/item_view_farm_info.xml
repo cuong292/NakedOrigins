@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
+  android:id="@+id/root_view"
   android:layout_height="wrap_content"
   android:layout_marginBottom="10dp"
   android:orientation="vertical">
@@ -13,8 +14,8 @@
       android:id="@+id/farm_name_tv"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:layout_weight="2"
-      android:fontFamily="@font/playfairdisplay"
+      android:layout_weight="4"
+      android:fontFamily="@font/playfair_display_regular"
       android:text="Azizi Okoye’s Farm"
       android:textColor="@color/colorBlack"
       android:textSize="@dimen/textSize35sp" />
@@ -32,15 +33,17 @@
     android:orientation="horizontal">
 
     <ImageView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:src="@drawable/ic_pie_graph" />
+      android:id="@+id/percent_iv"
+      android:layout_width="40dp"
+      android:layout_height="40dp"
+      android:src="@drawable/aizi_farm" />
 
     <TextView
       android:id="@+id/farm_description_tv"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:layout_weight="1"
+      android:layout_weight="3"
+      android:fontFamily="@font/montserrat_regular"
       android:paddingStart="5dp"
       android:paddingLeft="5dp"
       android:text="Contributed to 45% of the Kati Kati Blend"

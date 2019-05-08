@@ -18,11 +18,9 @@ import butterknife.BindView;
  * The Support Fragment
  */
 public class SupportFragment extends ViewFragment<SupportContract.Presenter> implements SupportContract.View {
-  @BindView(R.id.support_iv)
-  ImageView supportIv;
+  @BindView(R.id.clickableView)
+  View v;
 
-  private int xArea;
-  private int yArea;
 
   public static SupportFragment getInstance() {
     return new SupportFragment();
@@ -36,32 +34,13 @@ public class SupportFragment extends ViewFragment<SupportContract.Presenter> imp
   @Override
   public void initLayout() {
     super.initLayout();
-    Display display = getActivity().getWindowManager().getDefaultDisplay();
-    Point size = new Point();
-    display.getSize(size);
-    xArea = 500;
-    yArea = 1120;
-    supportIv.setOnTouchListener(new View.OnTouchListener() {
+    v.setOnClickListener(new View.OnClickListener() {
       @Override
-      public boolean onTouch(View v, MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_UP) {
-          float xTouch = event.getX();
-          float yTouch = event.getY();
-          if (insideXArea(xTouch) && insideYArea(yTouch)) {
-            new SupportMessagePresenter((ContainerView) getActivity()).pushView();
-            return true;
-          }
-        }
-        return false;
+      public void onClick(View v) {
+        new SupportMessagePresenter((ContainerView) getActivity()).pushViewWithAnimation(R.anim.fade_in, R.anim.fade_out);
       }
     });
   }
 
-  public boolean insideXArea(float point) {
-    return xArea + 100 >= Math.round(point) && xArea - 100 <= Math.round(point);
-  }
 
-  public boolean insideYArea(float point) {
-    return yArea + 100 >= Math.round(point) && yArea - 100 <= Math.round(point);
-  }
 }

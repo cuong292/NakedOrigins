@@ -11,12 +11,12 @@
   <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fontFamily="@font/playfairdisplay"
+    android:fontFamily="@font/playfair_display_regular"
     android:gravity="center"
     android:padding="30dp"
     android:text="@string/product_description"
-    android:textColor="@color/colorBlack"
-    android:textSize="@dimen/textSize20sp" />
+    android:textColor="@color/colorSemiBlack75"
+    android:textSize="@dimen/textSize18sp" />
 
   <TextView
     android:id="@+id/searching_tv"
@@ -25,10 +25,10 @@
     android:layout_gravity="center|bottom"
     android:layout_marginBottom="30dp"
     android:background="@drawable/rounded_corner_10dp_tv"
-    android:fontFamily="@font/montserrat"
+    android:fontFamily="@font/montserrat_regular"
     android:padding="20dp"
-    android:text="Searching for coffee.."
-    android:textColor="@color/colorBlack"
-    android:textSize="@dimen/textSize15sp" />
+    android:text="Searching For Coffee..."
+    android:textColor="@color/colorSemiBlack"
+    android:textSize="@dimen/textSize20sp" />
 
 </FrameLayout>

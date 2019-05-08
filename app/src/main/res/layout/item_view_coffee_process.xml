@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
+  android:layout_height="wrap_content"
   android:orientation="vertical">
 
   <TextView
@@ -21,7 +21,7 @@
     android:layout_marginLeft="50dp"
     android:layout_marginTop="5dp"
     android:layout_marginRight="50dp"
-    android:layout_marginBottom="30dp"
+    android:layout_marginBottom="100dp"
     android:fontFamily="@font/playfairdisplay"
     android:gravity="center"
     android:text="The Final Touches"
@@ -48,10 +48,10 @@
       android:id="@+id/process_tv"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="30dp"
-      android:layout_marginEnd="30dp"
-      android:fontFamily="@font/playfairdisplay"
-      android:text="The Brewing Process"
+      android:layout_marginStart="40dp"
+      android:layout_marginEnd="100dp"
+      android:fontFamily="@font/playfair_display_regular"
+      android:text="The Roasting &amp; Brewing Process"
       android:textColor="@color/colorSemiBlack"
       android:textSize="@dimen/textSize30sp" />
 
@@ -59,7 +59,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_below="@+id/process_tv"
-      android:layout_marginStart="30dp"
+      android:layout_marginStart="40dp"
       android:orientation="horizontal">
 
       <TextView
@@ -67,7 +67,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/montserrat_regular"
         android:text="@string/process"
         android:textColor="@color/colorSemiBlack"
         android:textSize="@dimen/textSize15sp" />

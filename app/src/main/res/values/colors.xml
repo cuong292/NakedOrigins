@@ -8,8 +8,10 @@
   <color name="colorSemiTransparent">#56FFFFFF</color>
   <color name="colorTransparentParent">#80000000</color>
   <color name="colorWhite">#FDFDFD</color>
+  <color name="colorWhitee">#FFFFFF</color>
   <color name="colorPatel">#F7EDDF</color>
   <color name="colorSemiBlack">#202020</color>
+  <color name="colorSemiBlack75">#BF202020</color>
   <color name="colorSemiiBlack">#030303</color>
   <color name="colorSemiGray">#595650</color>
   <color name="colorMenuDisable">#727272</color>

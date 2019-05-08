@@ -1,28 +1,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/about_root_view"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:id="@+id/about_root_view"
-  android:background="@drawable/anhcaphe">
+  android:background="@drawable/about_bg">
 
   <TextView
+    android:id="@+id/explore_coffee_tv"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="30dp"
+    android:layout_margin="50dp"
     android:fontFamily="@font/playfairdisplay"
     android:gravity="center"
     android:text="@string/product_explore"
-    android:textColor="@color/colorWhite"
-    android:textSize="@dimen/textSize35sp" />
+    android:textColor="@color/colorWhitee"
+    android:textSize="@dimen/textSize30sp" />
 
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_above="@+id/coffee_brand_tv"
     android:layout_centerInParent="true"
-    android:fontFamily="@font/montserrat"
+    android:fontFamily="@font/montserrat_regular"
     android:text="SEASONAL BLEND"
-    android:textColor="@color/colorWhite" />
+    android:textColor="@color/colorWhitee"
+    android:textSize="@dimen/textSize15sp" />
 
   <TextView
     android:id="@+id/coffee_brand_tv"
@@ -30,10 +32,11 @@
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:layout_centerInParent="true"
+    android:layout_marginTop="-15dp"
     android:layout_marginBottom="30dp"
-    android:fontFamily="@font/playfairdisplay"
+    android:fontFamily="@font/playfair_display_regular"
     android:text="Kati Kati Blend"
-    android:textColor="@color/colorWhite"
-    android:textSize="@dimen/textSize40sp" />
+    android:textColor="@color/colorWhitee"
+    android:textSize="@dimen/textSize45sp" />
 
 </RelativeLayout>

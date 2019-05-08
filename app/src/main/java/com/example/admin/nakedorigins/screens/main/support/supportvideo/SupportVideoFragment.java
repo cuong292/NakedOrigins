@@ -1,6 +1,7 @@
 package com.example.admin.nakedorigins.screens.main.support.supportvideo;
 
 import android.media.AudioAttributes;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
@@ -33,6 +34,8 @@ public class SupportVideoFragment extends ViewFragment<SupportVideoContract.Pres
   ImageView muteIv;
   @BindView(R.id.checkout_tv)
   TextView checkoutTv;
+  @BindView(R.id.close_iv)
+  ImageView closeIv;
 
   private MediaPlayer mPlayer;
   private boolean mIsMuted = false;
@@ -51,7 +54,6 @@ public class SupportVideoFragment extends ViewFragment<SupportVideoContract.Pres
   @Override
   public void initLayout() {
     super.initLayout();
-    showProgress();
     mHandler = new Handler() {
       @Override
       public void handleMessage(Message msg) {
@@ -80,6 +82,9 @@ public class SupportVideoFragment extends ViewFragment<SupportVideoContract.Pres
     progressBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
       @Override
       public void onProgressChanged(final SeekBar seekBar, int progress, boolean fromUser) {
+        if (mPlayer == null) {
+          return;
+        }
         if (fromUser) {
           mPlayer.seekTo(progress);
           mPlayer.start();
@@ -101,6 +106,9 @@ public class SupportVideoFragment extends ViewFragment<SupportVideoContract.Pres
     muteIv.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        if (mPlayer == null) {
+          return;
+        }
         if (mIsMuted) {
           mIsMuted = false;
           muteIv.setImageResource(R.drawable.ic_mute);
@@ -118,6 +126,13 @@ public class SupportVideoFragment extends ViewFragment<SupportVideoContract.Pres
       public void onClick(View v) {
         mPlayer.stop();
         new DiscoverSplashPresenter((ContainerView) getActivity()).pushViewWithAnimation(R.anim.fade_in, R.anim.fade_out);
+      }
+    });
+
+    closeIv.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        mPresenter.back();
       }
     });
   }
@@ -139,7 +154,6 @@ public class SupportVideoFragment extends ViewFragment<SupportVideoContract.Pres
   public void setupPlayer() {
     SurfaceHolder holder = videoView.getHolder();
     mPlayer.setDisplay(holder);
-    hideProgress();
     progressBar.setMax(mPlayer.getDuration());
     playCycle();
     mPlayer.start();

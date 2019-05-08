@@ -1,9 +1,12 @@
 package com.example.admin.nakedorigins.screens.main;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.View;
 
+import com.example.admin.nakedorigins.MainActivity;
 import com.example.admin.nakedorigins.customview.MenuNavigationView;
 import com.example.admin.nakedorigins.customview.NonSwipeNormalViewPager;
 import com.example.admin.nakedorigins.customview.NonSwipeableViewPager;
@@ -19,6 +22,7 @@ import com.example.admin.nakedorigins.viewutilities.AlphaPagerTransformer;
 import com.gemvietnam.base.viper.ViewFragment;
 import com.example.admin.nakedorigins.R;
 import com.gemvietnam.base.viper.interfaces.ContainerView;
+import com.gemvietnam.utils.ActivityUtils;
 
 import butterknife.BindView;
 
@@ -30,6 +34,8 @@ public class MainFragment extends ViewFragment<MainContract.Presenter> implement
   MenuNavigationView mBottomNavigator;
   @BindView(R.id.main_vp)
   NonSwipeNormalViewPager mViewPager;
+  @BindView(R.id.scan_qr_fab)
+  FloatingActionButton scanQrFab;
 
   private SupportPresenter firstPresenter;
   private JourneyPresenter secondPresenter;
@@ -87,5 +93,12 @@ public class MainFragment extends ViewFragment<MainContract.Presenter> implement
     mBottomNavigator.setupWithViewPager(mViewPager);
     mViewPager.setCurrentItem(wrapper.getCurrentTab());
     wrapper.setCurrentTab(0);
+    scanQrFab.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        ActivityUtils.startActivity(getViewContext(), MainActivity.class);
+        getActivity().finish();
+      }
+    });
   }
 }

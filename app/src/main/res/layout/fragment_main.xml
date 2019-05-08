@@ -6,11 +6,28 @@
   android:background="@color/colorWhite"
   android:orientation="vertical">
 
-  <com.example.admin.nakedorigins.customview.NonSwipeNormalViewPager
-    android:id="@+id/main_vp"
+  <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="1" />
+    android:layout_weight="1">
+
+    <com.example.admin.nakedorigins.customview.NonSwipeNormalViewPager
+      android:id="@+id/main_vp"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+
+    <android.support.design.widget.FloatingActionButton
+      android:id="@+id/scan_qr_fab"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_alignParentBottom="true"
+      android:layout_marginEnd="30dp"
+      android:layout_marginBottom="20dp"
+      android:backgroundTint="@color/colorWhite"
+      android:src="@drawable/ic_scan"
+      app:backgroundTint="@color/colorWhite" />
+  </RelativeLayout>
 
   <com.example.admin.nakedorigins.customview.MenuNavigationView
     android:id="@+id/bottom_navigator"

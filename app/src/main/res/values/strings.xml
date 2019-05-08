@@ -1,14 +1,14 @@
 <resources>
   <string name="app_name">NakedOrigins</string>
-  <string name="product_description">100% of your contributions to the
-    Farmer’s Fund and through this app will go towards the coffee farmers.</string>
+  <string name="product_description">100% of your contributions to the Farmer’s Fund and through this app will go towards the coffee farmers.</string>
   <string name="product_explore">Explore The History Of Your Coffee</string>
   <string name="process">Ground yesterday, your cup of Kati Kati blend was brewed at 95 C, to extract all the flavour from the coffee.</string>
+  <string name="process2">The coffee beans were sun-dried by spreading on the drying tables. Once the beans were dried from approximately 60% moisture content to <b>11-12%</b> moisture content, they are readied for export.</string>
   <string name="farmer_detail">Azizi has been a coffee farmer for over 30 years. He spends 12 hours on the field almost everyday, trying to harvest as much as he is able to.</string>
-    <string name="discover">DISCOVER</string>
-    <string name="new_favourite">NEW FAVOURITE</string>
-    <string name="tasting_note"><![CDATA[TASTING & NOTE]]></string>
+  <string name="discover">DISCOVER</string>
+  <string name="new_favourite">NEW FAVOURITE</string>
+  <string name="tasting_note"><![CDATA[TASTING & NOTE]]></string>
   <string name="kati_kati_description">Swahili for “between”, Kati Kati strikes a balance between the citrus and spice nots from Kenya and the subtle floral aromas from Ethiopia</string>
-    <string name="close">Close</string>
+  <string name="close">Close</string>
   <string name="find_your_coffee">FIND YOUR NEXT COFFEE</string>
 </resources>
