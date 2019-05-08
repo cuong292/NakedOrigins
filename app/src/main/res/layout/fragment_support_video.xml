@@ -4,12 +4,36 @@
   android:layout_height="match_parent"
   android:background="@color/colorWhite">
 
-  <VideoView
-    android:id="@+id/support_vv"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentBottom="true"
+  <SurfaceView
+    android:id="@+id/video_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
+
+  <ImageView
+    android:id="@+id/mute_iv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+    android:padding="20dp"
+    android:src="@drawable/ic_mute" />
+
+  <SeekBar
+    android:id="@+id/progrees_seekbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/checkout_tv"
+    android:layout_marginEnd="@dimen/textSize20sp"
+    android:layout_marginStart="@dimen/textSize20sp" />
+
+  <TextView
+    android:id="@+id/checkout_tv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_margin="20dp"
+    android:background="@drawable/bg_solid_pink"
+    android:gravity="center"
+    android:padding="20dp"
+    android:text="CHECK OUT KATI KATI'S ORIGINS"
+    android:textColor="@color/colorSemiBlack" />
 </RelativeLayout>
