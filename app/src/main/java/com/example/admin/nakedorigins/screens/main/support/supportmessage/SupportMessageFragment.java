@@ -16,6 +16,8 @@ import com.example.admin.nakedorigins.R;
 import com.gemvietnam.base.viper.interfaces.ContainerView;
 import com.gemvietnam.utils.StringUtils;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -28,7 +30,7 @@ public class SupportMessageFragment extends ViewFragment<SupportMessageContract.
   @BindView(R.id.suggest_tag)
   TagView suggestTagView;
   @BindView(R.id.support_message_edt)
-  EditText supportEdt;
+  TextView supportEdt;
   @BindView(R.id.skip_tv)
   TextView tvSkip;
   @BindView(R.id.send_view)
@@ -50,16 +52,14 @@ public class SupportMessageFragment extends ViewFragment<SupportMessageContract.
     super.initLayout();
     suggestTagView.removeAll();
     suggestTagView.addTag(new Tag("Nice coffee!"));
-    suggestTagView.addTag(new Tag("Hi-5!"));
+    suggestTagView.addTag(new Tag("Hi-5! \\u270B"));
     suggestTagView.addTag(new Tag("Support"));
-    suggestTagView.addTag(new Tag("Thanks For Your Hard Work!"));
     suggestTagView.addTag(new Tag("Love It!"));
+    suggestTagView.addTag(new Tag("Thanks For Your Hard Work! \\uD83D\\uDC4D"));
     suggestTagView.setOnTagClickListener(new TagView.OnTagClickListener() {
       @Override
       public void onTagClick(Tag tag, int position) {
-        String builder = supportEdt.getText().toString() +
-            tag.text;
-        supportEdt.setText(builder);
+        supportEdt.setText(StringEscapeUtils.unescapeEcmaScript(tag.text));
       }
     });
 
@@ -89,14 +89,14 @@ public class SupportMessageFragment extends ViewFragment<SupportMessageContract.
     sendView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        new SupportVideoPresenter((ContainerView) getActivity()).pushViewWithAnimation(R.anim.fade_in,R.anim.fade_out);
+        new SupportVideoPresenter((ContainerView) getActivity()).pushViewWithAnimation(R.anim.fade_in, R.anim.fade_out);
       }
     });
 
     tvSkip.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        new SupportVideoPresenter((ContainerView) getActivity()).pushViewWithAnimation(R.anim.fade_in,R.anim.fade_out);
+        new SupportVideoPresenter((ContainerView) getActivity()).pushViewWithAnimation(R.anim.fade_in, R.anim.fade_out);
       }
     });
 

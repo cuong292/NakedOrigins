@@ -2,6 +2,7 @@ package com.example.admin.nakedorigins.screens.qrcodescan;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -29,6 +30,7 @@ public class QrCodeViewFragment extends Fragment implements ZXingScannerView.Res
     mScannerView.setBorderCornerRadius(20);
     mScannerView.setBorderStrokeWidth(20);
     mScannerView.setLaserEnabled(false);
+    mScannerView.setMaskColor(Color.TRANSPARENT);
     if (!PermissionUtils.needRequestPermissions(container.getContext(), this, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}, 200)) {
       mScannerView.startCamera();
     }

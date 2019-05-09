@@ -14,9 +14,9 @@ public interface Constants {
 
   public static final float DEFAULT_LINE_MARGIN = 5;
   public static final float DEFAULT_TAG_MARGIN = 5;
-  public static final float DEFAULT_TAG_TEXT_PADDING_LEFT = 4;
+  public static final float DEFAULT_TAG_TEXT_PADDING_LEFT = 0;
   public static final float DEFAULT_TAG_TEXT_PADDING_TOP = 4;
-  public static final float DEFAULT_TAG_TEXT_PADDING_RIGHT = 4;
+  public static final float DEFAULT_TAG_TEXT_PADDING_RIGHT = 0;
   public static final float DEFAULT_TAG_TEXT_PADDING_BOTTOM = 4;
 
   public static final float DEFAULT_TAG_TEXT_SIZE = 14f;

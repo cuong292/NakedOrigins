@@ -66,7 +66,7 @@ public class SupportVideoFragment extends ViewFragment<SupportVideoContract.Pres
     thread = new Thread(new Runnable() {
       @Override
       public void run() {
-        String path = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.demo_video;
+        String path = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.farm_video;
         Uri uri = Uri.parse(path);
         mPlayer = MediaPlayer.create(getViewContext(), uri);
         AudioAttributes attributes = new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_MEDIA).setContentType(AudioAttributes.CONTENT_TYPE_MOVIE).build();
@@ -136,6 +136,10 @@ public class SupportVideoFragment extends ViewFragment<SupportVideoContract.Pres
     closeIv.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        thread.interrupt();
+        if (mPlayer != null) {
+          mPlayer.stop();
+        }
         mPresenter.back();
       }
     });
@@ -161,11 +165,5 @@ public class SupportVideoFragment extends ViewFragment<SupportVideoContract.Pres
     progressBar.setMax(mPlayer.getDuration());
     playCycle();
     mPlayer.start();
-  }
-
-  @Override
-  public void onStop() {
-    super.onStop();
-    mPlayer.stop();
   }
 }

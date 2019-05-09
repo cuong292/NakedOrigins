@@ -14,4 +14,8 @@ public class Utils {
     DisplayMetrics metrics = c.getResources().getDisplayMetrics();
     return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
   }
+
+  public static int dpToPx(Context c, int dp){
+    return c.getResources().getDimensionPixelSize(dp);
+  }
 }

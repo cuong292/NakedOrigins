@@ -9,4 +9,6 @@
   <dimen name="textSize40sp">40sp</dimen>
   <dimen name="textSize45sp">45sp</dimen>
   <dimen name="margin_small">8dp</dimen>
+  <dimen name="padding_12dp">12dp</dimen>
+  <dimen name="margin_5dp">5dp</dimen>
 </resources>

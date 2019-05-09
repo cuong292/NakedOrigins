@@ -21,7 +21,7 @@ public class Typefaces {
     synchronized (CACHE) {
       if (!CACHE.containsKey(font)) {
         try {
-          String path = "fonts/" + font + "." + type;
+          String path = "font/" + font + "." + type;
           Typeface t = Typeface.createFromAsset(c.getAssets(), path);
           CACHE.put(font, t);
           Logger.d(TAG, "FONT " + t.toString());

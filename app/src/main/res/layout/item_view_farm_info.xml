@@ -18,7 +18,7 @@
       android:fontFamily="@font/playfair_display_regular"
       android:text="Azizi Okoye’s Farm"
       android:textColor="@color/colorBlack"
-      android:textSize="@dimen/textSize35sp" />
+      android:textSize="@dimen/textSize30sp" />
 
     <LinearLayout
       android:layout_width="0dp"

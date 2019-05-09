@@ -6,7 +6,7 @@
     android:title="SUPPORT" />
   <item
     android:id="@+id/journey_mn"
-    android:icon="@drawable/jouney_icon"
+    android:icon="@drawable/journey_menu"
     android:title="JOURNEY" />
   <item
     android:id="@+id/discover_mn"
