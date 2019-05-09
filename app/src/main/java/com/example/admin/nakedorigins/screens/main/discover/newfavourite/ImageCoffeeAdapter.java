@@ -26,13 +26,19 @@ public class ImageCoffeeAdapter extends PagerAdapter {
 		this.mListener = listener;
 	}
 
+	public void updateData(List<Coffee> list) {
+		mData = list;
+		notifyDataSetChanged();
+	}
+
 	@Override
 	public int getCount() {
 		return mData.size();
 	}
 
-	public void setListener(OnItemImageClickListener mListener) {
-		this.mListener = mListener;
+	@Override
+	public int getItemPosition(@NonNull Object object) {
+		return super.getItemPosition(object);
 	}
 
 	@Override
