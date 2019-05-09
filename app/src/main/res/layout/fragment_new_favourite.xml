@@ -16,7 +16,7 @@
             android:layout_alignParentEnd="true"
             android:contentDescription="@string/app_name"
             android:padding="16dp"
-            android:src="@drawable/white_close"
+            android:src="@drawable/ic_close_white"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
