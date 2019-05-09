@@ -39,6 +39,7 @@ public class CustomRadarView extends View {
 	private boolean isStartChange = false;
 	private int rPoint = 45;
 	private int xSize = 10;
+	private boolean isDefault = false;
 
 	private enum TypePoint {
 		NONE, BODY, ACIDITY, AROMA, BITTERNESS
@@ -222,7 +223,10 @@ public class CustomRadarView extends View {
 		bitternessP = bitternessPercent;
 
 		if (isUpdate) {
+			isDefault = false;
 			requestViewChange();
+		} else {
+			isDefault = true;
 		}
 	}
 
@@ -402,14 +406,16 @@ public class CustomRadarView extends View {
 		setDateY(acidity, acidityP, maxAcidity, minAcidity, -1);
 		setDateY(bitterness, bitternessP, maxBitter, minBitter, 1);
 
-		sBody.x = body.x;
-		sBody.y = body.y;
-		sAcdity.x = acidity.x;
-		sAcdity.y = acidity.y;
-		sAroma.x = aroma.x;
-		sAroma.y = aroma.y;
-		sBitterness.x = bitterness.x;
-		sBitterness.y = bitterness.y;
+		if (isDefault) {
+			sBody.x = body.x;
+			sBody.y = body.y;
+			sAcdity.x = acidity.x;
+			sAcdity.y = acidity.y;
+			sAroma.x = aroma.x;
+			sAroma.y = aroma.y;
+			sBitterness.x = bitterness.x;
+			sBitterness.y = bitterness.y;
+		}
 
 		invalidate();
 	}
