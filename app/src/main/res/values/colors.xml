@@ -19,4 +19,5 @@
   <color name="colorDiscoverBackground">#2C2B29</color>
   <color name="colorDiscoverBackground50">#802C2B29</color>
   <color name="bgDiscover">#E6EFF4</color>
+  <color name="bgDiscoverDetail">#F5ECDD</color>
 </resources>
