@@ -1,7 +1,6 @@
 package com.example.admin.nakedorigins.screens.main.support.supportvideo;
 
 import android.media.AudioAttributes;
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
@@ -40,6 +39,7 @@ public class SupportVideoFragment extends ViewFragment<SupportVideoContract.Pres
   private MediaPlayer mPlayer;
   private boolean mIsMuted = false;
   private Handler mHandler;
+  private Thread thread;
 
   public static SupportVideoFragment getInstance() {
     return new SupportVideoFragment();
@@ -63,10 +63,11 @@ public class SupportVideoFragment extends ViewFragment<SupportVideoContract.Pres
         }
       }
     };
-    Thread thread = new Thread(new Runnable() {
+    thread = new Thread(new Runnable() {
       @Override
       public void run() {
-        Uri uri = Uri.parse("http://www.exit109.com/~dnn/clips/RW20seconds_1.mp4");
+        String path = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.demo_video;
+        Uri uri = Uri.parse(path);
         mPlayer = MediaPlayer.create(getViewContext(), uri);
         AudioAttributes attributes = new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_MEDIA).setContentType(AudioAttributes.CONTENT_TYPE_MOVIE).build();
         mPlayer.setAudioAttributes(attributes);
@@ -124,7 +125,10 @@ public class SupportVideoFragment extends ViewFragment<SupportVideoContract.Pres
     checkoutTv.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        mPlayer.stop();
+        thread.interrupt();
+        if (mPlayer != null) {
+          mPlayer.stop();
+        }
         new DiscoverSplashPresenter((ContainerView) getActivity()).pushViewWithAnimation(R.anim.fade_in, R.anim.fade_out);
       }
     });
