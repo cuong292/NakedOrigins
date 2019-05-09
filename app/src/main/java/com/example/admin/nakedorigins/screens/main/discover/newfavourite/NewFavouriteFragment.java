@@ -102,37 +102,37 @@ public class NewFavouriteFragment extends ViewFragment<NewFavouriteContract.Pres
 		papuaCf.setId(2);
 		papuaCf.setName("Papua New Guine");
 		papuaCf.setResImg(R.drawable.cf_papua_new_guinea);
-		papuaCf.setBodyPercent(60);
-		papuaCf.setAcidityPercent(75);
-		papuaCf.setAromaPercent(25);
-		papuaCf.setBitternessPercent(45);
+		papuaCf.setBodyPercent(2);//60);
+		papuaCf.setAcidityPercent(3);//75);
+		papuaCf.setAromaPercent(1);//25);
+		papuaCf.setBitternessPercent(2);//45);
 
 		Coffee pikeCf = new Coffee();
 		pikeCf.setId(3);
 		pikeCf.setName("Pike Place Roast");
 		pikeCf.setResImg(R.drawable.cf_pike_place_roast);
-		pikeCf.setBodyPercent(45);
-		pikeCf.setAcidityPercent(60);
-		pikeCf.setAromaPercent(83);
-		pikeCf.setBitternessPercent(28);
+		pikeCf.setBodyPercent(2);//45);
+		pikeCf.setAcidityPercent(2);//60);
+		pikeCf.setAromaPercent(3);//83);
+		pikeCf.setBitternessPercent(1);//28);
 
 		Coffee guatemalaCf = new Coffee();
 		guatemalaCf.setId(4);
 		guatemalaCf.setName("Flor Del Rosario");
 		guatemalaCf.setResImg(R.drawable.cf_guatemala);
-		guatemalaCf.setBodyPercent(30);
-		guatemalaCf.setAcidityPercent(55);
-		guatemalaCf.setAromaPercent(65);
-		guatemalaCf.setBitternessPercent(80);
+		guatemalaCf.setBodyPercent(1);//30);
+		guatemalaCf.setAcidityPercent(2);//55);
+		guatemalaCf.setAromaPercent(2);//65);
+		guatemalaCf.setBitternessPercent(3);//80);
 
 		Coffee verandaCf = new Coffee();
 		verandaCf.setId(5);
 		verandaCf.setName("Veranda Blend");
 		verandaCf.setResImg(R.drawable.cf_veranda_blend);
-		verandaCf.setBodyPercent(38);
-		verandaCf.setAcidityPercent(66);
-		verandaCf.setAromaPercent(52);
-		verandaCf.setBitternessPercent(28);
+		verandaCf.setBodyPercent(2);//38);
+		verandaCf.setAcidityPercent(2);//66);
+		verandaCf.setAromaPercent(2);//52);
+		verandaCf.setBitternessPercent(1);//28);
 
 		mNotMatch = new Coffee();
 		mNotMatch.setId(-1);

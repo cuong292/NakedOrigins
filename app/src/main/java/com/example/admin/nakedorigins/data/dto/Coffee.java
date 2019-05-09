@@ -14,10 +14,10 @@ public class Coffee implements Serializable {
 	private int resImg;
 
 	public Coffee() {
-		this.bodyPercent = 85;
-		this.acidityPercent = 60;
-		this.aromaPercent = 35;
-		this.bitternessPercent = 25;
+		this.bodyPercent = 3;//85;
+		this.acidityPercent = 2;//= 60;
+		this.aromaPercent = 1;//35;
+		this.bitternessPercent = 1;//25;
 		this.name = "Kati Kati Blend";
 		this.resImg = R.drawable.cf_kati_kati;
 		this.id = 1;

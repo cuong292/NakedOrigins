@@ -30,9 +30,10 @@ public class CustomRadarView extends View {
 	private Path path;
 	private Path dashPath;
 	private Point body, acidity, aroma, bitterness;
-	private Point sBody, sAcdity, sAroma, sBitterness;
+	private Point sBody, sAcidity, sAroma, sBitterness;
 	private int maxCoordinate;
 	private int minBody, maxBody, minAcidity, maxAcidity, minAroma, maxAroma, minBitter, maxBitter;
+	private int mediumBody, mediumAcidity, mediumAroma, mediumBitter;
 	private int Ox, Oy;
 	private float touchX, touchY;
 	private float bodyP, acidityP, aromaP, bitternessP;
@@ -87,14 +88,14 @@ public class CustomRadarView extends View {
 		canvas.drawLine(Ox - xSize, maxAcidity, Ox + xSize, maxAcidity, paint);
 		canvas.drawLine(Ox - xSize, minBitter, Ox + xSize, minBitter, paint);
 		canvas.drawLine(Ox - xSize, maxBitter, Ox + xSize, maxBitter, paint);
-		canvas.drawLine(minBody - (int) ((minBody - maxBody) / 2), Oy - xSize, minBody - (int) ((minBody - maxBody) / 2), Oy + xSize, paint);
-		canvas.drawLine(minAroma + (int) ((maxAroma - minAroma) / 2), Oy - xSize, minAroma + (int) ((maxAroma - minAroma) / 2), Oy + xSize, paint);
-		canvas.drawLine(Ox - xSize, minAcidity - (int) ((minAcidity - maxAcidity) / 2), Ox + xSize, minAcidity - (int) ((minAcidity - maxAcidity) / 2), paint);
-		canvas.drawLine(Ox - xSize, minBitter + (int) ((maxBitter - minBitter) / 2), Ox + xSize, minBitter + (int) ((maxBitter - minBitter) / 2), paint);
+		canvas.drawLine(mediumBody, Oy - xSize, mediumBody, Oy + xSize, paint);
+		canvas.drawLine(mediumAroma, Oy - xSize, mediumAroma, Oy + xSize, paint);
+		canvas.drawLine(Ox - xSize, mediumAcidity, Ox + xSize, mediumAcidity, paint);
+		canvas.drawLine(Ox - xSize, mediumBitter, Ox + xSize, mediumBitter, paint);
 
 		dashPath.reset();
 		dashPath.moveTo(sBody.x, sBody.y);
-		dashPath.lineTo(sAcdity.x, sAcdity.y);
+		dashPath.lineTo(sAcidity.x, sAcidity.y);
 		dashPath.lineTo(sAroma.x, sAroma.y);
 		dashPath.lineTo(sBitterness.x, sBitterness.y);
 		dashPath.lineTo(sBody.x, sBody.y);
@@ -140,7 +141,18 @@ public class CustomRadarView extends View {
 				break;
 
 			case MotionEvent.ACTION_UP:
+				float upX = event.getX();
+				float upY = event.getY();
+
 				if (typePoint != TypePoint.NONE && dataChangeListener != null) {
+					if (typePoint == TypePoint.BODY || typePoint == TypePoint.AROMA) {
+						updateX(typePoint, upX);
+
+					} else {
+						updateY(typePoint, upY);
+					}
+					invalidate();
+
 					float bodyPercent = ((float) (Ox - body.x)) / maxCoordinate * 100;
 					float aromaPercent = (float) (aroma.x - Ox) / maxCoordinate * 100;
 					float acidityPercent = ((float) (Oy - acidity.y)) / maxCoordinate * 100;
@@ -204,12 +216,19 @@ public class CustomRadarView extends View {
 		int perCoordinate = maxCoordinate / 5;
 
 		minBody = Ox - perCoordinate;
+		mediumBody = minBody - (int) ((minBody - maxBody) / 2);
 		maxBody = Ox - maxCoordinate;
+
 		minAcidity = Oy - perCoordinate;
+		mediumAcidity = minAcidity - (int) ((minAcidity - maxAcidity) / 2);
 		maxAcidity = Oy - maxCoordinate;
+
 		minAroma = Ox + perCoordinate;
+		mediumAroma = minAroma + (int) ((maxAroma - minAroma) / 2);
 		maxAroma = Ox + maxCoordinate;
+
 		minBitter = Oy + perCoordinate;
+		mediumBitter = minBitter + (int) ((maxBitter - minBitter) / 2);
 		maxBitter = Oy + maxCoordinate;
 
 		requestViewChange();
@@ -269,7 +288,7 @@ public class CustomRadarView extends View {
 		aroma = new Point();
 		bitterness = new Point();
 		sBody = new Point();
-		sAcdity = new Point();
+		sAcidity = new Point();
 		sAroma = new Point();
 		sBitterness = new Point();
 
@@ -401,16 +420,20 @@ public class CustomRadarView extends View {
 	}
 
 	private void requestViewChange() {
-		setDateX(body, bodyP, maxBody, minBody, -1);
-		setDateX(aroma, aromaP, maxAroma, minAroma, 1);
-		setDateY(acidity, acidityP, maxAcidity, minAcidity, -1);
-		setDateY(bitterness, bitternessP, maxBitter, minBitter, 1);
+//		setDateX(body, bodyP, maxBody, minBody, -1);
+//		setDateX(aroma, aromaP, maxAroma, minAroma, 1);
+//		setDateY(acidity, acidityP, maxAcidity, minAcidity, -1);
+//		setDateY(bitterness, bitternessP, maxBitter, minBitter, 1);
+		setDateXX(body, (int) bodyP, maxBody, minBody);
+		setDateXX(aroma, (int) aromaP, maxAroma, minAroma);
+		setDateYY(acidity, (int) acidityP, maxAcidity, minAcidity);
+		setDateYY(bitterness, (int) bitternessP, maxBitter, minBitter);
 
 		if (isDefault) {
 			sBody.x = body.x;
 			sBody.y = body.y;
-			sAcdity.x = acidity.x;
-			sAcdity.y = acidity.y;
+			sAcidity.x = acidity.x;
+			sAcidity.y = acidity.y;
 			sAroma.x = aroma.x;
 			sAroma.y = aroma.y;
 			sBitterness.x = bitterness.x;
@@ -418,5 +441,130 @@ public class CustomRadarView extends View {
 		}
 
 		invalidate();
+	}
+
+	//NEW UPDATE POINT
+	private void setDateXX(Point point, int percent, int maxX, int minX) {
+		switch (percent) {
+			case 1:
+				point.x = minX;
+				break;
+
+			case 2:
+				point.x = minX + (maxX - minX) / 2;
+				break;
+
+			case 3:
+				point.x = maxX;
+				break;
+
+			default:
+				point.x = minX;
+				break;
+		}
+
+		point.y = Oy;
+		Log.e("setX", "data:" + point.x + ", percent:" + percent);
+	}
+
+	private void setDateYY(Point point, int percent, int maxY, int minY) {
+		switch (percent) {
+			case 1:
+				point.y = minY;
+				break;
+
+			case 2:
+				point.y = minY + (maxY - minY) / 2;
+				break;
+
+			case 3:
+				point.y = maxY;
+				break;
+
+			default:
+				point.y = minY;
+				break;
+		}
+
+		point.x = Ox;
+		Log.e("setY", "data:" + point.y + ", percent:" + percent);
+	}
+
+	private void updateX(TypePoint type, float currentX) {
+		if (TypePoint.BODY == type) {
+			if ((minBody - currentX) < (minBody - mediumBody)) {
+				if ((minBody - currentX) <= (minBody - mediumBody) / 2) {
+					body.x = minBody;
+
+				} else {
+					body.x = mediumBody;
+				}
+
+			} else {
+				if ((mediumBody - currentX) <= (mediumBody - maxBody) / 2) {
+					body.x = mediumBody;
+
+				} else {
+					body.x = maxBody;
+				}
+			}
+
+		} else {
+			if ((currentX - minAroma) < (mediumAroma - minAroma)) {
+				if ((currentX - minAroma) <= (mediumAroma - minAroma) / 2) {
+					aroma.x = minAroma;
+
+				} else {
+					aroma.x = mediumAroma;
+				}
+
+			} else {
+				if ((currentX - mediumAroma) <= (maxAroma - mediumAroma) / 2) {
+					aroma.x = mediumAroma;
+
+				} else {
+					aroma.x = maxAroma;
+				}
+			}
+		}
+	}
+
+	private void updateY(TypePoint type, float currentY) {
+		if (TypePoint.ACIDITY == type) {
+			if ((minAcidity - currentY) < (minAcidity - mediumAcidity)) {
+				if ((minAcidity - currentY) <= (minAcidity - mediumAcidity) / 2) {
+					acidity.y = minAcidity;
+
+				} else {
+					acidity.y = mediumAcidity;
+				}
+
+			} else {
+				if ((mediumAcidity - currentY) <= (mediumAcidity - maxAcidity) / 2) {
+					acidity.y = mediumAcidity;
+
+				} else {
+					acidity.y = maxAcidity;
+				}
+			}
+
+		} else {
+			if ((currentY - minBitter) < (mediumBitter - minBitter)) {
+				if ((currentY - minBitter) <= (mediumBitter - minBitter) / 2) {
+					bitterness.y = minBitter;
+
+				} else {
+					bitterness.y = mediumBitter;
+				}
+
+			} else {
+				if ((currentY - mediumBitter) <= (maxBitter - mediumBitter) / 2) {
+					bitterness.y = mediumBitter;
+
+				} else {
+					bitterness.y = maxBitter;
+				}
+			}
+		}
 	}
 }
