@@ -53,8 +53,7 @@ public class JourneyFragment extends ViewFragment<JourneyContract.Presenter> imp
     options.inSampleSize = 2;
     Bitmap bitmap = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.journey_test_bg, options);
     view.setBackground(new BitmapDrawable(getActivity().getResources(), bitmap));
-    bitmap.recycle();
-    bitmap = null;
+
     List<FarmCoffeeDTO> items = new ArrayList<>();
     items.add(new FarmCoffeeDTO("Azizi Okoye’s Farm", "Contributed to 45% of the Kati Kati Blend"));
     items.add(new FarmCoffeeDTO("Zelalem Tadesse’s Farm", "Contributed to 55% of the Kati Kati Blend"));

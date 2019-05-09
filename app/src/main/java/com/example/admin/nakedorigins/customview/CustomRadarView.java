@@ -3,6 +3,7 @@ package com.example.admin.nakedorigins.customview;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
@@ -23,17 +24,20 @@ public class CustomRadarView extends View {
 
 	private OnDataChangeListener dataChangeListener;
 	private Paint paint;
+	private Paint dashPaint;
 	private Paint paintPolygon;
 	private Paint paintCircle;
 	private Path path;
 	private Point body, acidity, aroma, bitterness;
+	private Point sBody, sAcdity, sAroma, sBitterness;
 	private int maxCoordinate;
 	private int minBody, maxBody, minAcidity, maxAcidity, minAroma, maxAroma, minBitter, maxBitter;
 	private int Ox, Oy;
 	private float touchX, touchY;
 	private float bodyP, acidityP, aromaP, bitternessP;
 	private boolean isStartChange = false;
-	private int rPoint = 30;
+	private int rPoint = 45;
+	private int xSize = 10;
 
 	private enum TypePoint {
 		NONE, BODY, ACIDITY, AROMA, BITTERNESS
@@ -72,6 +76,21 @@ public class CustomRadarView extends View {
 		canvas.drawText("AROMA", Ox + maxCoordinate + 70, Oy + 10, paint);
 		canvas.drawText("ACIDITY", Ox - 60, Oy - maxCoordinate - 70, paint);
 		canvas.drawText("BITTERNESS", Ox - 90, Oy + maxCoordinate + 100, paint);
+
+		canvas.drawLine(minBody, Oy - xSize, minBody, Oy + xSize, paint);
+		canvas.drawLine(maxBody, Oy - xSize, maxBody, Oy + xSize, paint);
+		canvas.drawLine(minAroma, Oy - xSize, minAroma, Oy + xSize, paint);
+		canvas.drawLine(maxAroma, Oy - xSize, maxAroma, Oy + xSize, paint);
+		canvas.drawLine(Ox - xSize, minAcidity, Ox + xSize, minAcidity, paint);
+		canvas.drawLine(Ox - xSize, maxAcidity, Ox + xSize, maxAcidity, paint);
+		canvas.drawLine(Ox - xSize, minBitter, Ox + xSize, minBitter, paint);
+		canvas.drawLine(Ox - xSize, maxBitter, Ox + xSize, maxBitter, paint);
+		canvas.drawLine(minBody - (int) ((minBody - maxBody) / 2), Oy - xSize, minBody - (int) ((minBody - maxBody) / 2), Oy + xSize, paint);
+		canvas.drawLine(minAroma + (int) ((maxAroma - minAroma) / 2), Oy - xSize, minAroma + (int) ((maxAroma - minAroma) / 2), Oy + xSize, paint);
+		canvas.drawLine(Ox - xSize, minAcidity - (int) ((minAcidity - maxAcidity) / 2), Ox + xSize, minAcidity - (int) ((minAcidity - maxAcidity) / 2), paint);
+		canvas.drawLine(Ox - xSize, minBitter + (int) ((maxBitter - minBitter) / 2), Ox + xSize, minBitter + (int) ((maxBitter - minBitter) / 2), paint);
+
+		//canvas.drawLine(sBody.x, sBody.y, sAcdity.x, sAcdity.y, dashPaint);
 
 
 		if (body.x != Ox && acidity.y != Oy && aroma.x != Ox && bitterness.y != Oy) {
@@ -213,6 +232,14 @@ public class CustomRadarView extends View {
 		paintPolygon.setAntiAlias(true);
 		paintPolygon.setAlpha(50);
 
+		float[] db = {5f, 5f};
+		dashPaint = new Paint();
+		dashPaint.setStyle(Paint.Style.FILL);
+		dashPaint.setPathEffect(new DashPathEffect(db, 10f));
+		dashPaint.setColor(Color.WHITE);
+		dashPaint.setAntiAlias(true);
+		dashPaint.setStrokeWidth(3f);
+
 		paint = new Paint();
 		paint.setStyle(Paint.Style.FILL);
 		paint.setColor(Color.WHITE);
@@ -230,6 +257,9 @@ public class CustomRadarView extends View {
 		acidity = new Point();
 		aroma = new Point();
 		bitterness = new Point();
+		sBody = new Point();
+		sAcdity = new Point();
+
 
 		body.x = Ox;
 		body.y = Oy;
@@ -268,7 +298,7 @@ public class CustomRadarView extends View {
 	}
 
 	private boolean inRange(float x, float y, Point point) {
-		return ((x <= (point.x + 35)) && (x >= (point.x - 35)) && (y < (point.y + 35)) && (y >= (point.y - 35)));
+		return ((x <= (point.x + 45)) && (x >= (point.x - 45)) && (y < (point.y + 45)) && (y >= (point.y - 45)));
 	}
 
 	private void updateXPoint(float currentX, Point point, int maxX, int minX) {
@@ -363,6 +393,12 @@ public class CustomRadarView extends View {
 		setDateX(aroma, aromaP, maxAroma, minAroma, 1);
 		setDateY(acidity, acidityP, maxAcidity, minAcidity, -1);
 		setDateY(bitterness, bitternessP, maxBitter, minBitter, 1);
+
+		sBody.x = body.x;
+		sBody.y = body.y;
+		sAcdity.x = acidity.x;
+		sAcdity.y = acidity.y;
+
 		invalidate();
 	}
 }
