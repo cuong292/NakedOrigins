@@ -5,6 +5,8 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.admin.nakedorigins.customview.CustomRadarView;
@@ -25,11 +27,17 @@ public class NewFavouriteFragment extends ViewFragment<NewFavouriteContract.Pres
 	@BindView(R.id.custom_radar)
 	CustomRadarView customRadarView;
 
+	@BindView(R.id.close_iv)
+	ImageView imgClose;
+
 	@BindView(R.id.cf_name)
 	TextView cfName;
 
 	@BindView(R.id.vp_cafe)
 	ViewPager vpCafe;
+
+	@BindView(R.id.btn_reset)
+	Button btnReset;
 
 	private Coffee mCafe;
 	private Coffee mNotMatch;
@@ -177,6 +185,24 @@ public class NewFavouriteFragment extends ViewFragment<NewFavouriteContract.Pres
 		customRadarView.setDataView(mCafe.getBodyPercent(), mCafe.getAcidityPercent(),
 				mCafe.getAromaPercent(), mCafe.getBitternessPercent(), false);
 		updateView();
+
+		btnReset.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mCafe = mCoffeeList.get(2);
+				vpCafe.setCurrentItem(2);
+				customRadarView.setDataView(mCafe.getBodyPercent(), mCafe.getAcidityPercent(),
+						mCafe.getAromaPercent(), mCafe.getBitternessPercent(), true);
+				updateView();
+			}
+		});
+
+		imgClose.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mPresenter.back();
+			}
+		});
 	}
 
 	private void updateCoffee(float bodyPercent, float acidityPercent, float aromaPercent, float bitternessPercent) {
@@ -223,10 +249,12 @@ public class NewFavouriteFragment extends ViewFragment<NewFavouriteContract.Pres
 
 	@Override
 	public void onItemImageClick(int position, Coffee item) {
-		Bundle bundle = new Bundle();
-		bundle.putSerializable(DiscoverFragment.KEY_DATA, item);
-		bundle.putInt(DiscoverFragment.KEY_TYPE, 2);
+		if (item.getId() > 0) {
+			Bundle bundle = new Bundle();
+			bundle.putSerializable(DiscoverFragment.KEY_DATA, item);
+			bundle.putInt(DiscoverFragment.KEY_TYPE, 2);
 
-		new DiscoverPresenter((ContainerView) getViewContext(), bundle).pushView();
+			new DiscoverPresenter((ContainerView) getViewContext(), bundle).pushView();
+		}
 	}
 }

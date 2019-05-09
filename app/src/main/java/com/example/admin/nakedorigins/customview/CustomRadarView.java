@@ -28,6 +28,7 @@ public class CustomRadarView extends View {
 	private Paint paintPolygon;
 	private Paint paintCircle;
 	private Path path;
+	private Path dashPath;
 	private Point body, acidity, aroma, bitterness;
 	private Point sBody, sAcdity, sAroma, sBitterness;
 	private int maxCoordinate;
@@ -90,7 +91,13 @@ public class CustomRadarView extends View {
 		canvas.drawLine(Ox - xSize, minAcidity - (int) ((minAcidity - maxAcidity) / 2), Ox + xSize, minAcidity - (int) ((minAcidity - maxAcidity) / 2), paint);
 		canvas.drawLine(Ox - xSize, minBitter + (int) ((maxBitter - minBitter) / 2), Ox + xSize, minBitter + (int) ((maxBitter - minBitter) / 2), paint);
 
-		//canvas.drawLine(sBody.x, sBody.y, sAcdity.x, sAcdity.y, dashPaint);
+		dashPath.reset();
+		dashPath.moveTo(sBody.x, sBody.y);
+		dashPath.lineTo(sAcdity.x, sAcdity.y);
+		dashPath.lineTo(sAroma.x, sAroma.y);
+		dashPath.lineTo(sBitterness.x, sBitterness.y);
+		dashPath.lineTo(sBody.x, sBody.y);
+		canvas.drawPath(dashPath, dashPaint);
 
 
 		if (body.x != Ox && acidity.y != Oy && aroma.x != Ox && bitterness.y != Oy) {
@@ -225,6 +232,7 @@ public class CustomRadarView extends View {
 
 	private void init() {
 		path = new Path();
+		dashPath = new Path();
 
 		paintPolygon = new Paint();
 		paintPolygon.setStyle(Paint.Style.FILL);
@@ -232,10 +240,9 @@ public class CustomRadarView extends View {
 		paintPolygon.setAntiAlias(true);
 		paintPolygon.setAlpha(50);
 
-		float[] db = {5f, 5f};
 		dashPaint = new Paint();
-		dashPaint.setStyle(Paint.Style.FILL);
-		dashPaint.setPathEffect(new DashPathEffect(db, 10f));
+		dashPaint.setStyle(Paint.Style.STROKE);
+		dashPaint.setPathEffect(new DashPathEffect(new float[]{10f, 10f}, 0f));
 		dashPaint.setColor(Color.WHITE);
 		dashPaint.setAntiAlias(true);
 		dashPaint.setStrokeWidth(3f);
@@ -259,7 +266,8 @@ public class CustomRadarView extends View {
 		bitterness = new Point();
 		sBody = new Point();
 		sAcdity = new Point();
-
+		sAroma = new Point();
+		sBitterness = new Point();
 
 		body.x = Ox;
 		body.y = Oy;
@@ -398,6 +406,10 @@ public class CustomRadarView extends View {
 		sBody.y = body.y;
 		sAcdity.x = acidity.x;
 		sAcdity.y = acidity.y;
+		sAroma.x = aroma.x;
+		sAroma.y = aroma.y;
+		sBitterness.x = bitterness.x;
+		sBitterness.y = bitterness.y;
 
 		invalidate();
 	}

@@ -1,6 +1,8 @@
 package com.example.admin.nakedorigins.screens.main.discover;
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,6 +23,15 @@ import butterknife.BindView;
 public class DiscoverFragment extends ViewFragment<DiscoverContract.Presenter> implements DiscoverContract.View {
 	public static final String KEY_DATA = "data";
 	public static final String KEY_TYPE = "type";
+
+	@BindView(R.id.v_root)
+	NestedScrollView vRoot;
+
+	@BindView(R.id.v_parent)
+	ConstraintLayout vParent;
+
+	@BindView(R.id.title_first)
+	TextView tvTitle;
 
 	@BindView(R.id.cf_name)
 	TextView tvCfName;
@@ -71,7 +82,8 @@ public class DiscoverFragment extends ViewFragment<DiscoverContract.Presenter> i
 		}
 
 		if (type == 2) {
-			//btnNext.setText(getString(R.string.close));
+			//tvTitle.setText("SINGLE ORIGIN");
+			btnNext.setText(getString(R.string.close));
 			imgClose.setVisibility(View.VISIBLE);
 			imgClose.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -79,6 +91,13 @@ public class DiscoverFragment extends ViewFragment<DiscoverContract.Presenter> i
 					mPresenter.back();
 				}
 			});
+			vRoot.setBackgroundColor(getViewContext().getResources().getColor(R.color.bgDiscoverDetail));
+			vParent.setBackgroundResource(R.drawable.bg_discover_detail);
+
+		} else {
+			//tvTitle.setText(R.string.what_you_re_drinking);
+			vRoot.setBackgroundColor(getViewContext().getResources().getColor(R.color.bgDiscover));
+			vParent.setBackgroundResource(R.drawable.bg_discover);
 		}
 
 		tvCfName.setText(mCafe.getName());

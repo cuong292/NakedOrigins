@@ -1,10 +1,12 @@
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/v_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgDiscover">
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/v_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_discover"
@@ -17,7 +19,6 @@
             android:layout_alignParentEnd="true"
             android:contentDescription="@string/app_name"
             android:padding="16dp"
-            android:scaleType="centerCrop"
             android:src="@drawable/white_close"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:gravity="center"
-            android:text="WHAT YOU'RE DRINKING"
+            android:text="@string/what_you_re_drinking"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/textSize20sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -57,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="130dp"
             android:layout_marginRight="40dp"
             android:fontFamily="@font/montserrat"
             android:gravity="center"
@@ -188,6 +189,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginRight="16dp"
             android:background="@drawable/bg_solid_black"
+            android:minHeight="60dp"
             android:text="@string/find_your_coffee"
             android:textColor="@color/colorPatel"
             app:layout_constraintLeft_toLeftOf="parent"
