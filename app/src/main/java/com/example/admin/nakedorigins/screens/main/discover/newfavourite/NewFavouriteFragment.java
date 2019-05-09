@@ -32,9 +32,11 @@ public class NewFavouriteFragment extends ViewFragment<NewFavouriteContract.Pres
 	ViewPager vpCafe;
 
 	private Coffee mCafe;
+	private Coffee mNotMatch;
 	private List<Coffee> mCoffeeList = new ArrayList<>();
 	private ImageCoffeeAdapter mAdapter;
 	private boolean isChangeData = false;
+	private boolean isNotMatched = false;
 
 	public static NewFavouriteFragment getInstance() {
 		return new NewFavouriteFragment();
@@ -124,9 +126,14 @@ public class NewFavouriteFragment extends ViewFragment<NewFavouriteContract.Pres
 		verandaCf.setAromaPercent(52);
 		verandaCf.setBitternessPercent(28);
 
-		mCoffeeList.add(katiCf);
+		mNotMatch = new Coffee();
+		mNotMatch.setId(-1);
+		mNotMatch.setName("New Favourite");
+		mNotMatch.setResImg(R.drawable.cf_not_match);
+
 		mCoffeeList.add(papuaCf);
 		mCoffeeList.add(pikeCf);
+		mCoffeeList.add(katiCf);
 		mCoffeeList.add(guatemalaCf);
 		mCoffeeList.add(verandaCf);
 
@@ -141,6 +148,12 @@ public class NewFavouriteFragment extends ViewFragment<NewFavouriteContract.Pres
 
 			@Override
 			public void onPageSelected(int i) {
+				if (isNotMatched) {
+					mCoffeeList.remove(5);
+					mAdapter.updateData(mCoffeeList);
+					isNotMatched = false;
+				}
+
 				if (isChangeData) {
 					isChangeData = false;
 
@@ -167,17 +180,18 @@ public class NewFavouriteFragment extends ViewFragment<NewFavouriteContract.Pres
 	}
 
 	private void updateCoffee(float bodyPercent, float acidityPercent, float aromaPercent, float bitternessPercent) {
+		int pos;
 		if (bodyPercent > 70 && acidityPercent <= 70 && aromaPercent <= 70 && bitternessPercent <= 70) {
+			mCafe = mCoffeeList.get(2);
+			vpCafe.setCurrentItem(2);
+
+		} else if (bodyPercent <= 70 && acidityPercent > 70 && aromaPercent <= 70 && bitternessPercent <= 70) {
 			mCafe = mCoffeeList.get(0);
 			vpCafe.setCurrentItem(0);
 
-		} else if (bodyPercent <= 70 && acidityPercent > 70 && aromaPercent <= 70 && bitternessPercent <= 70) {
+		} else if (bodyPercent <= 70 && acidityPercent <= 70 && aromaPercent > 70 && bitternessPercent <= 70) {
 			mCafe = mCoffeeList.get(1);
 			vpCafe.setCurrentItem(1);
-
-		} else if (bodyPercent <= 70 && acidityPercent <= 70 && aromaPercent > 70 && bitternessPercent <= 70) {
-			mCafe = mCoffeeList.get(2);
-			vpCafe.setCurrentItem(2);
 
 		} else if (bodyPercent <= 70 && acidityPercent <= 70 && aromaPercent <= 70 && bitternessPercent > 70) {
 			mCafe = mCoffeeList.get(3);
@@ -186,6 +200,13 @@ public class NewFavouriteFragment extends ViewFragment<NewFavouriteContract.Pres
 		} else if ((bodyPercent > 75 && acidityPercent > 75 && aromaPercent > 75 && bitternessPercent > 75) ||
 				(bodyPercent < 35 && acidityPercent < 35 && aromaPercent < 35 && bitternessPercent < 35)) {
 			//not match
+			if (!isNotMatched) {
+				isNotMatched = true;
+				mCafe = mNotMatch;
+				mCoffeeList.add(5, mNotMatch);
+				mAdapter.updateData(mCoffeeList);
+				vpCafe.setCurrentItem(5);
+			}
 
 		} else {
 			mCafe = mCoffeeList.get(4);
