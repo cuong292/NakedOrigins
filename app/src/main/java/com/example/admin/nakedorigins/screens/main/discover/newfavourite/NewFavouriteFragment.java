@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.admin.nakedorigins.customview.CustomRadarView;
@@ -30,6 +31,9 @@ public class NewFavouriteFragment extends ViewFragment<NewFavouriteContract.Pres
 
 	@BindView(R.id.vp_cafe)
 	ViewPager vpCafe;
+
+	@BindView(R.id.btn_reset)
+	Button btnReset;
 
 	private Coffee mCafe;
 	private Coffee mNotMatch;
@@ -177,6 +181,17 @@ public class NewFavouriteFragment extends ViewFragment<NewFavouriteContract.Pres
 		customRadarView.setDataView(mCafe.getBodyPercent(), mCafe.getAcidityPercent(),
 				mCafe.getAromaPercent(), mCafe.getBitternessPercent(), false);
 		updateView();
+
+		btnReset.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mCafe = mCoffeeList.get(2);
+				vpCafe.setCurrentItem(2);
+				customRadarView.setDataView(mCafe.getBodyPercent(), mCafe.getAcidityPercent(),
+						mCafe.getAromaPercent(), mCafe.getBitternessPercent(), true);
+				updateView();
+			}
+		});
 	}
 
 	private void updateCoffee(float bodyPercent, float acidityPercent, float aromaPercent, float bitternessPercent) {

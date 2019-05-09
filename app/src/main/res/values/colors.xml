@@ -17,5 +17,6 @@
   <color name="colorMenuDisable">#727272</color>
   <color name="colorMenuEnable">#DE9A7C</color>
   <color name="colorDiscoverBackground">#2C2B29</color>
+  <color name="colorDiscoverBackground50">#802C2B29</color>
   <color name="bgDiscover">#E6EFF4</color>
 </resources>

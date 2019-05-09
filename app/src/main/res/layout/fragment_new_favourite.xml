@@ -53,6 +53,24 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cf_name" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorDiscoverBackground50"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_cafe"
+            app:layout_constraintDimensionRatio="1:3.3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/vp_cafe" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorDiscoverBackground50"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_cafe"
+            app:layout_constraintDimensionRatio="1:3.3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/vp_cafe" />
+
         <com.example.admin.nakedorigins.customview.CustomRadarView
             android:id="@+id/custom_radar"
             android:layout_width="match_parent"
@@ -60,5 +78,21 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/vp_cafe" />
+
+        <Button
+            android:id="@+id/btn_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bg_button_squard_border"
+            android:drawableLeft="@drawable/ic_reset"
+            android:fontFamily="@font/montserrat"
+            android:paddingLeft="10dp"
+            android:text="@string/reset"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/custom_radar" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.NestedScrollView>
