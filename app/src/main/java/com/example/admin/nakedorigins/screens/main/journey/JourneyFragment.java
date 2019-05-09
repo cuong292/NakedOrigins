@@ -1,9 +1,11 @@
 package com.example.admin.nakedorigins.screens.main.journey;
 
-import android.support.v4.widget.NestedScrollView;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.admin.nakedorigins.data.dto.FarmCoffeeDTO;
@@ -13,7 +15,6 @@ import com.gemvietnam.base.viper.ViewFragment;
 import com.example.admin.nakedorigins.R;
 import com.gemvietnam.base.viper.interfaces.ContainerView;
 import com.gemvietnam.utils.RecyclerUtils;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,19 +28,13 @@ public class JourneyFragment extends ViewFragment<JourneyContract.Presenter> imp
   @BindView(R.id.farm_coffee_rv)
   RecyclerView mFarmRv;
   @BindView(R.id.root_view)
-  NestedScrollView view;
+  View view;
   @BindView(R.id.process_name2_tv)
   TextView processTv;
   @BindView(R.id.question_tv)
   TextView questionTv;
   @BindView(R.id.process_detail1_tv)
   TextView process1;
-  @BindView(R.id.header_bg)
-  ImageView headerIv;
-  @BindView(R.id.coffee1)
-  ImageView coffeeIv;
-  @BindView(R.id.coffee2)
-  ImageView coffee2Iv;
 
   public static JourneyFragment getInstance() {
     return new JourneyFragment();
@@ -53,6 +48,13 @@ public class JourneyFragment extends ViewFragment<JourneyContract.Presenter> imp
   @Override
   public void initLayout() {
     super.initLayout();
+    BitmapFactory.Options options = new BitmapFactory.Options();
+    options.inPreferredConfig = Bitmap.Config.RGB_565;
+    options.inSampleSize = 2;
+    Bitmap bitmap = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.journey_test_bg, options);
+    view.setBackground(new BitmapDrawable(getActivity().getResources(), bitmap));
+    bitmap.recycle();
+    bitmap = null;
     List<FarmCoffeeDTO> items = new ArrayList<>();
     items.add(new FarmCoffeeDTO("Azizi Okoye’s Farm", "Contributed to 45% of the Kati Kati Blend"));
     items.add(new FarmCoffeeDTO("Zelalem Tadesse’s Farm", "Contributed to 55% of the Kati Kati Blend"));
@@ -68,8 +70,7 @@ public class JourneyFragment extends ViewFragment<JourneyContract.Presenter> imp
     processTv.setText(Html.fromHtml("The " + "<i>" + "Final" + "</i>" + " Touches"));
     questionTv.setText(Html.fromHtml("Where’s My " + "<i>" + "Coffee" + "</i>" + " From?"));
     process1.setText(Html.fromHtml(getString(R.string.process2)));
-    Picasso.with(getViewContext()).load(R.drawable.header_image).into(headerIv);
-    Picasso.with(getViewContext()).load(R.drawable.may_cafe).into(coffeeIv);
-    Picasso.with(getViewContext()).load(R.drawable.may_cafe).into(coffee2Iv);
   }
+
+
 }

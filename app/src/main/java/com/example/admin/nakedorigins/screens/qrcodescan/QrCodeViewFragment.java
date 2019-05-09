@@ -2,9 +2,7 @@ package com.example.admin.nakedorigins.screens.qrcodescan;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,8 +13,6 @@ import android.view.ViewGroup;
 import com.example.admin.nakedorigins.R;
 import com.gemvietnam.utils.PermissionUtils;
 import com.google.zxing.Result;
-
-import java.io.Serializable;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -33,7 +29,7 @@ public class QrCodeViewFragment extends Fragment implements ZXingScannerView.Res
     mScannerView.setBorderCornerRadius(20);
     mScannerView.setBorderStrokeWidth(20);
     mScannerView.setLaserEnabled(false);
-    if (!PermissionUtils.needRequestPermissions(container.getContext(), this, new String[]{Manifest.permission.CAMERA}, 200)) {
+    if (!PermissionUtils.needRequestPermissions(container.getContext(), this, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}, 200)) {
       mScannerView.startCamera();
     }
     return mScannerView;

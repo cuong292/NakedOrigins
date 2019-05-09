@@ -1,46 +1,44 @@
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:id="@+id/root_view"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:background="@drawable/journey_bg">
+  android:layout_height="match_parent">
 
-  <RelativeLayout
+  <TextView
+    android:id="@+id/tracking_tv"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerInParent="true"
+    android:layout_marginTop="40dp"
+    android:fontFamily="@font/montserrat"
+    android:gravity="center"
+    android:text="TRACKING THE SOURCE"
+    android:textColor="@color/colorPatel"
+    android:textSize="@dimen/textSize20sp" />
 
-    <ImageView
-      android:id="@+id/header_bg"
-      android:layout_width="match_parent"
-      android:scaleType="fitXY"
-      android:layout_height="250dp" />
+  <TextView
+    android:id="@+id/question_tv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/tracking_tv"
+    android:layout_centerInParent="true"
+    android:layout_marginStart="40dp"
+    android:layout_marginEnd="40dp"
+    android:layout_marginBottom="100dp"
+    android:fontFamily="@font/playfair_display_regular"
+    android:gravity="center"
+    android:textColor="@color/colorPatel"
+    android:textSize="@dimen/textSize40sp" />
+
+  <android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/question_tv">
 
     <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical">
-
-      <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/montserrat"
-        android:gravity="center"
-        android:text="TRACKING THE SOURCE"
-        android:textColor="@color/colorPatel"
-        android:textSize="@dimen/textSize20sp" />
-
-      <TextView
-        android:id="@+id/question_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="100dp"
-        android:fontFamily="@font/playfair_display_regular"
-        android:gravity="center"
-        android:textColor="@color/colorPatel"
-        android:textSize="@dimen/textSize40sp" />
 
       <android.support.v7.widget.RecyclerView
         android:id="@+id/farm_coffee_rv"
@@ -89,9 +87,9 @@
             android:layout_alignParentStart="true">
 
             <ImageView
-              android:id="@+id/coffee1"
               android:layout_width="200dp"
-              android:layout_height="300dp" />
+              android:layout_height="300dp"
+              android:src="@drawable/may_cafe" />
           </LinearLayout>
 
           <TextView
@@ -174,9 +172,9 @@
             android:layout_alignParentEnd="true">
 
             <ImageView
-              android:id="@+id/coffee2"
               android:layout_width="200dp"
-              android:layout_height="300dp" />
+              android:layout_height="300dp"
+              android:src="@drawable/may_cafe" />
           </LinearLayout>
 
           <TextView
@@ -214,8 +212,9 @@
           </LinearLayout>
         </RelativeLayout>
       </LinearLayout>
-
     </LinearLayout>
-  </RelativeLayout>
-</android.support.v4.widget.NestedScrollView>
+
+
+  </android.support.v4.widget.NestedScrollView>
+</RelativeLayout>
 

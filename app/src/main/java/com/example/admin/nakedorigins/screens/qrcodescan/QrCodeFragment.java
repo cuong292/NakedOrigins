@@ -1,26 +1,15 @@
 package com.example.admin.nakedorigins.screens.qrcodescan;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.example.admin.nakedorigins.screens.SplashActivity;
 import com.example.admin.nakedorigins.screens.about.AboutPresenter;
 import com.gemvietnam.base.viper.ViewFragment;
 import com.example.admin.nakedorigins.R;
 import com.gemvietnam.base.viper.interfaces.ContainerView;
-import com.gemvietnam.utils.ActivityUtils;
-import com.gemvietnam.utils.PermissionUtils;
-import com.google.zxing.Result;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -61,7 +50,7 @@ public class QrCodeFragment extends ViewFragment<QrCodeContract.Presenter> imple
         anim.setRepeatCount(0);
         mSearchingTv.startAnimation(anim);
         mSearchingTv.setVisibility(View.GONE);
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.schedule(new TimerTask() {
           @Override
           public void run() {
