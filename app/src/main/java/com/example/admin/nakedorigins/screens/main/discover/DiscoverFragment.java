@@ -101,8 +101,8 @@ public class DiscoverFragment extends ViewFragment<DiscoverContract.Presenter> i
 		}
 
 		tvCfName.setText(mCafe.getName());
-		cpAcidity.setPercent(mCafe.getAcidityPercent() / 20);
-		cpBody.setPercent(mCafe.getBodyPercent() / 20);
+		cpAcidity.setPercent(mCafe.getAcidityPercent());
+		cpBody.setPercent(mCafe.getBodyPercent());
 
 		btnNext.setOnClickListener(new View.OnClickListener() {
 			@Override
