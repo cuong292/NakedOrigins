@@ -18,7 +18,7 @@ public class CustomRadarView extends View {
 	public interface OnDataChangeListener {
 		void onStartChange();
 
-		void onChangeFinish(float bodyPercent, float acidityPercent, float aromaPercent, float bitternessPercent);
+		void onChangeFinish(int bodyPercent, int acidityPercent, int aromaPercent, int bitternessPercent);
 	}
 
 
@@ -153,12 +153,17 @@ public class CustomRadarView extends View {
 					}
 					invalidate();
 
-					float bodyPercent = ((float) (Ox - body.x)) / maxCoordinate * 100;
-					float aromaPercent = (float) (aroma.x - Ox) / maxCoordinate * 100;
-					float acidityPercent = ((float) (Oy - acidity.y)) / maxCoordinate * 100;
-					float bitternessPercent = ((float) (bitterness.y - Oy)) / maxCoordinate * 100;
+//					float bodyPercent = ((float) (Ox - body.x)) / maxCoordinate * 100;
+//					float aromaPercent = (float) (aroma.x - Ox) / maxCoordinate * 100;
+//					float acidityPercent = ((float) (Oy - acidity.y)) / maxCoordinate * 100;
+//					float bitternessPercent = ((float) (bitterness.y - Oy)) / maxCoordinate * 100;
 
-					dataChangeListener.onChangeFinish((int) bodyPercent, (int) acidityPercent, (int) aromaPercent, (int) bitternessPercent);
+					int bodyPercent = (minBody - body.x) / (minBody - mediumBody) + 1;
+					int aromaPercent = (aroma.x - minAroma) / (mediumAroma - minAroma) + 1;
+					int acidityPercent = (minAcidity - acidity.y) / (minAcidity - mediumAcidity) + 1;
+					int bitternessPercent = (bitterness.y - minBitter) / (mediumBitter - minBitter) + 1;
+
+					dataChangeListener.onChangeFinish(bodyPercent, acidityPercent, aromaPercent, bitternessPercent);
 				}
 
 				typePoint = TypePoint.NONE;

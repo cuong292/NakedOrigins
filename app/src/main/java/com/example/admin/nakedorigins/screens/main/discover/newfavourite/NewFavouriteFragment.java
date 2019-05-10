@@ -73,9 +73,10 @@ public class NewFavouriteFragment extends ViewFragment<NewFavouriteContract.Pres
 			}
 
 			@Override
-			public void onChangeFinish(float bodyPercent, float acidityPercent, float aromaPercent, float bitternessPercent) {
+			public void onChangeFinish(int bodyPercent, int acidityPercent, int aromaPercent, int bitternessPercent) {
 				Log.e("Finish", bodyPercent + ":" + acidityPercent + ":" + aromaPercent + ":" + bitternessPercent);
-				updateCoffee(bodyPercent, acidityPercent, aromaPercent, bitternessPercent);
+				//updateCoffee(bodyPercent, acidityPercent, aromaPercent, bitternessPercent);
+				updateCoffeeSelected(bodyPercent, acidityPercent, aromaPercent, bitternessPercent);
 			}
 		});
 
@@ -203,6 +204,38 @@ public class NewFavouriteFragment extends ViewFragment<NewFavouriteContract.Pres
 				mPresenter.back();
 			}
 		});
+	}
+
+	private void updateCoffeeSelected(int bodyPercent, int acidityPercent, int aromaPercent, int bitternessPercent) {
+		if (bodyPercent == 3 && acidityPercent == 2 && aromaPercent == 1 && bitternessPercent == 1) {
+			mCafe = mCoffeeList.get(2);
+			vpCafe.setCurrentItem(2);
+
+		} else if (bodyPercent == 2 && acidityPercent == 3 && aromaPercent == 1 && bitternessPercent == 2) {
+			mCafe = mCoffeeList.get(0);
+			vpCafe.setCurrentItem(0);
+
+		} else if (bodyPercent == 2 && acidityPercent == 2 && aromaPercent == 3 && bitternessPercent == 1) {
+			mCafe = mCoffeeList.get(1);
+			vpCafe.setCurrentItem(1);
+
+		} else if (bodyPercent == 1 && acidityPercent == 2 && aromaPercent == 2 && bitternessPercent == 3) {
+			mCafe = mCoffeeList.get(3);
+			vpCafe.setCurrentItem(3);
+
+		} else if (bodyPercent == 2 && acidityPercent == 2 && aromaPercent == 2 && bitternessPercent == 1) {
+			mCafe = mCoffeeList.get(4);
+			vpCafe.setCurrentItem(4);
+
+		} else {
+			if (!isNotMatched) {
+				isNotMatched = true;
+				mCafe = mNotMatch;
+				mCoffeeList.add(5, mNotMatch);
+				mAdapter.updateData(mCoffeeList);
+				vpCafe.setCurrentItem(5);
+			}
+		}
 	}
 
 	private void updateCoffee(float bodyPercent, float acidityPercent, float aromaPercent, float bitternessPercent) {
