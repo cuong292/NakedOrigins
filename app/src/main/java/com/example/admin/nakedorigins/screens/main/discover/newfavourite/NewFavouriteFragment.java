@@ -74,7 +74,7 @@ public class NewFavouriteFragment extends ViewFragment<NewFavouriteContract.Pres
 
 			@Override
 			public void onChangeFinish(int bodyPercent, int acidityPercent, int aromaPercent, int bitternessPercent) {
-				Log.e("Finish", bodyPercent + ":" + acidityPercent + ":" + aromaPercent + ":" + bitternessPercent);
+				Log.i("Finish", bodyPercent + ":" + acidityPercent + ":" + aromaPercent + ":" + bitternessPercent);
 				//updateCoffee(bodyPercent, acidityPercent, aromaPercent, bitternessPercent);
 				updateCoffeeSelected(bodyPercent, acidityPercent, aromaPercent, bitternessPercent);
 			}

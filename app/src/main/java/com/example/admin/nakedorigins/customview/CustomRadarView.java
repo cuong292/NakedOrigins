@@ -164,6 +164,7 @@ public class CustomRadarView extends View {
 					int bitternessPercent = (bitterness.y - minBitter) / (mediumBitter - minBitter) + 1;
 
 					dataChangeListener.onChangeFinish(bodyPercent, acidityPercent, aromaPercent, bitternessPercent);
+					performClick();
 				}
 
 				typePoint = TypePoint.NONE;
@@ -238,6 +239,17 @@ public class CustomRadarView extends View {
 
 		requestViewChange();
 		setMeasuredDimension(size, size);
+	}
+
+	@Override
+	public boolean performClick() {
+		// Calls the super implementation, which generates an AccessibilityEvent
+		// and calls the onClick() listener on the view, if any
+		super.performClick();
+
+		// Handle the action for the custom click here
+
+		return true;
 	}
 
 	public void setDataView(float bodyPercent, float acidityPercent, float aromaPercent, float bitternessPercent, boolean isUpdate) {
